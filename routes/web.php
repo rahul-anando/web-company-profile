@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\GaleriesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/g', [GaleriesController::class, 'index'])->name('index');
+Route::get('create', [GaleriesController::class, 'create'])->name('create');
+Route::post('store', [GaleriesController::class, 'store'])->name('store');
+Route::delete('delete/{galeries:id}', [GaleriesController::class, 'delete'])->name('delete');
+Route::get('edit/{galeries:id}', [GaleriesController::class, 'edit'])->name('edit');
+Route::put('update/{galeries:id}', [GaleriesController::class, 'update'])->name('update');
