@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages');
 });
+Route::get('/create', function () {
+    return view('create');
+});
+
+Route::get('pages', [PagesController::class, 'pages'])->name('pages');
+Route::get('create', [PagesController::class, 'create'])->name('create');
+Route::post('store', [PagesController::class, 'store'])->name('store');
+Route::delete('destroy/{pages:id}', [PagesController::class, 'destroy'])->name('destroy');
+Route::get('edit/{pages:id}', [PagesController::class, 'edit'])->name('edit');
+Route::put('update/{pages:id}', [PagesController::class, 'update'])->name('update');
