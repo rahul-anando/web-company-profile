@@ -18,7 +18,7 @@ use App\Http\Controllers\ArticlesController;
 */
 
 Route::get('/', function () {
-    return view('');
+    return view('welcome');
 });
 
 Route::get('/oy', function () {
@@ -46,7 +46,7 @@ Route::prefix('galeries/')->name('galeries.')->group(function () {
     Route::put('update/{galeries:id}', [GaleriesController::class, 'update'])->name('update');
     
 });
-Route::prefix('articles/')->name('galeries.')->group(function () {
+Route::prefix('articles/')->name('articles.')->group(function () {
     Route::get('/index', [ArticlesController::class, 'index']);
     Route::get('/create', [ArticlesController::class, 'create']);
     Route::post('/store', [ArticlesController::class, 'store'])->name('store');
