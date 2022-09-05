@@ -17,7 +17,7 @@ class CreateGaleriesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->enum('status', ['publish', 'pending']);
             $table->timestamps();
         });

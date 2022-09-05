@@ -10,8 +10,10 @@
 </head>
 
 <body>
-    <a href="/create" class="btn btn-primary">Create</a>
-    <div>
+    <div class="mb-3">
+
+        <a href="/create" class="btn btn-primary mb-3">Create</a>
+
         <table class="table">
             <thead>
                 <tr>
@@ -28,7 +30,7 @@
                         <td>{{ $galeri->title }}</td>
                         <td>{{ $galeri->slug }}</td>
                         {{-- <td>{{ $galeri->image }}</td> --}}
-                        <td><img src="{{ $galeri->takeImage() }}" alt="" style="width: 60px"></td>
+                        <td><img src="{{ asset('storage/' . $galeri->image) }}" alt="" style="width: 60px"></td>
                         <td>{{ $galeri->status }}</td>
                         <td class="d-flex">
                             <a class="btn btn-success me-2" href="edit/{{ $galeri->id }}">Edit</a>

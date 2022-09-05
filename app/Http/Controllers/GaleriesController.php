@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Galeries;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GaleriesController extends Controller
 {
@@ -20,12 +21,24 @@ class GaleriesController extends Controller
 
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'title'   => 'required|string|max:255',
-        //     'slug'    => 'required|string|max:255',
-        //     'image'   => 'image|mimes:jpeg,jpg,png|max:1024',
-        //     'status'  => 'required',
-        // ]);
+        // ddd($request);
+
+        // return $request->file('image')->store('post-images');
+
+        $validatedData = $request->validate([
+            'title'   => 'required|max:255',
+            'slug'    => 'required|max:255',
+            'image'   => 'image|file|max:1024',
+            'status'  => 'required'
+        ]);
+
+        if($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('post-images');
+        }
+
+        Galeries::create($validatedData);
+
+        return redirect('g')->with('success', 'Berhasil ditambahkan!');
 
         // $data = Galeries::create($request->all());
 
@@ -36,42 +49,67 @@ class GaleriesController extends Controller
         // }
 
         // return redirect('g');
-        Galeries::create([
-            'title' => request()->title,
-            'slug' => request()->slug,
-            'image' => request()->image,
-            'status' => request()->status,
-        ]);
 
-        return redirect('g');
+        // Galeries::create([
+        //     'title' => request()->title,
+        //     'slug' => request()->slug,
+        //     'image' => request()->image,
+        //     'status' => request()->status,
+        // ]);
+
     }
 
+    public function show($id)
+    {
 
-    // public function show($id)
-    // {
-
-    // }
+    }
 
     public function edit(Galeries $galeries)
     {
         return view('edit', compact('galeries'));
     }
 
-    public function update(Galeries $galeries)
+    public function update(Request $request, Galeries $galeries)
     {
-        $galeries->update([
-            'title' => request()->title,
-            'slug' => request()->slug,
-            'image' => request()->image,
-            'status' => request()->status,
-        ]);
+        // $galeries->update([
+        //     'title' => request()->title,
+        //     'slug' => request()->slug,
+        //     'image' => request()->image,
+        //     'status' => request()->status,
+        // ]);
+
+        $rules = [
+            'title'   => 'required|max:255',
+            'slug'    => 'required|max:255',
+            'image'   => 'image|file|max:1024',
+            'status'  => 'required'
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        if($request->file('image')) {
+            if($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('post-images');
+        }
+
+        Galeries::where('id', $galeries->id)
+            ->update($validatedData);
 
         return redirect('g');
     }
 
     public function delete(Galeries $galeries)
     {
-        $galeries->delete();
+        if($galeries->image) {
+            Storage::delete($galeries->image);
+        }
+
+        Galeries::destroy($galeries->id);
+
         return redirect()->back();
+
+        // $galeries->delete();
     }
 }

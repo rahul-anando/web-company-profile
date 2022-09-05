@@ -16,8 +16,4 @@ class Galeries extends Model
         'status'
     ];
 
-    public function takeImage()
-    {
-        return '/image/' . $this->image;
-    }
 }
