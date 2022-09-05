@@ -8,7 +8,9 @@
     <title>Document</title>
 </head>
 <body>
-    <button></button>
+    <div>
+        <a class="btn btn-primary " href="create">Create</a>
+    </div>
     <table class="table table-borderless mx-4 mt-4">
         <thead class="table-primary">
             <tr>
@@ -29,7 +31,7 @@
                 <td>{{ $data->title }}</td>
                 <td>{{ $data->slug }}</td>
                 <td>{{ $data->content }}</td>
-                <td>{{ $data->image }}</td>
+                <td><img src="{{ asset('storage/' . $data->image) }}" alt="" style=" width: 60px"></td>
                 <td>{{ $data->author }}</td>
                 <td>{{ $data->status }}</td>
                 <td>

@@ -18,7 +18,7 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('content');
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->string('author');
             $table->enum('status',['publish','pending']);
             $table->timestamps();
