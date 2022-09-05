@@ -1,5 +1,4 @@
-
-    <link rel="stylesheet" href="{{ asset('assets/dist/css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/dist/css/bootstrap.min.css') }}">
 
 <form action="store" method="POST" enctype="multipart/form-data">
 

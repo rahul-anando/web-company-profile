@@ -17,7 +17,7 @@ class PagesController extends Controller
     public function pages()
     {
         $pages = Pages::all();
-        return view('pages', compact('pages'));
+        return view('pages.index', compact('pages'));
     }
 
     /**
@@ -27,7 +27,7 @@ class PagesController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('pages.create');
     }
 
     /**
@@ -91,7 +91,7 @@ class PagesController extends Controller
      */
     public function edit(Pages $pages)
     {
-        return view('edit', compact('pages'));
+        return view('pages.edit', compact('pages'));
     }
 
     /**

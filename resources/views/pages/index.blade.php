@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('assets/dist/css/bootstrap.min.css') }}">
 </head>
 <body>
-    <a href="/create" class="btn btn-primary mt-3">Tambah Data</a>
+    <a href="{{ route('pages.create') }}" class="btn btn-primary mt-3">Tambah Data</a>
     <table class="table">
         <thead>
             <tr>
