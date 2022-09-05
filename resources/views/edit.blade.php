@@ -14,11 +14,11 @@
         </div>
         <div class="mt-3">
             <label for="">Content</label>
-            <input type="hidden" name="oldImage" value="{{ $pages->image }}">
             <input type="text" name="content" id="content" class="form-control" placeholder="Content" value="{{ $pages->content }}">
         </div>
         <div class="mt-3">
             <label for="">Image</label>
+            <input type="hidden" name="oldImage" value="{{ $pages->image }}">
             <input type="file" name="image" id="image" class="form-control" placeholder="Image" value="{{ $pages->image }}">
         </div>
         <div class="mt-3">

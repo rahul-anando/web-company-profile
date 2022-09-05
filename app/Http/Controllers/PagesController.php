@@ -114,6 +114,10 @@ class PagesController extends Controller
 
         $validateddata =$request->validate($rules);
         if($request->file('image')) {
+            if($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+
             $validateddata['image'] = $request->file('image')->store('images');
         }
         Pages::where('id', $pages->id)
@@ -160,21 +164,21 @@ class PagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-        {
-            $pages = Pages::find($id);
-            $delete = 'storage/'.$pages->image;
-            if(File::exists($delete))
-            {
-                File::delete($delete);
-            }
-            $pages->delete();
-            return redirect('pages');
-        }
+    // public function destroy($id)
+    //     {
+    //         $pages = Pages::find($id);
+    //         $delete = 'storage/'.$pages->image;
+    //         if(File::exists($delete))
+    //         {
+    //             File::delete($delete);
+    //         }
+    //         $pages->delete();
+    //         return redirect('pages');
+    //     }
     public function delete(Pages $pages)
     {
-        if($pages->oldImage) {
-            Storage::delete($pages->oldImage);
+        if($pages->image) {
+            Storage::delete($pages->image);
         }
         Pages::destroy($pages->id);
         return redirect()->back();

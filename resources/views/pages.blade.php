@@ -33,7 +33,7 @@
                 <td>{{ $page->status }}</td>
                 <td>
                     <a class="btn btn-warning" href="edit/{{ $page->id }}" data-toggle="tooltip" title="Edit">Edit</a>
-                    <a class="btn btn-danger" href="destroy/{{ $page->id }}" data-toggle="tooltip" title="Delete"
+                    <a class="btn btn-danger" href="delete/{{ $page->id }}" data-toggle="tooltip" title="Delete"
                         onclick="return confirm('Are You Sure?')">Delete</a>
                     {{-- <form action="destroy/{{ $page->id }}" method="POST">
                         @csrf
