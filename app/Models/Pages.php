@@ -16,8 +16,4 @@ class Pages extends Model
         'status' ,
     ];
 
-    public function takeImage()
-    {
-        return '/image/' . $this->image;
-    }
 }

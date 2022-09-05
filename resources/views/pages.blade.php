@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('assets/dist/css/bootstrap.min.css') }}">
 </head>
 <body>
-    <a href="/create" class="btn btn-primary">Tambah Data</a>
+    <a href="/create" class="btn btn-primary mt-3">Tambah Data</a>
     <table class="table">
         <thead>
             <tr>
@@ -29,16 +29,18 @@
                 <td>{{ $page->title }}</td>
                 <td>{{ $page->slug }}</td>
                 <td>{{ $page->content }}</td>
-                <td><img src="{{ $page->takeImage() }}" alt="" style="width: 60px"></td>
+                <td><img src="{{ asset('storage/'.$page->image) }}" alt="" style="width: 60px"></td>
                 <td>{{ $page->status }}</td>
                 <td>
-                    <a class="btn btn-primary btn-action" href="edit/{{ $page->id }}" data-toggle="tooltip" title="Edit">Edit</a>
-                    <form action="destroy/{{ $page->id }}" method="POST">
+                    <a class="btn btn-warning" href="edit/{{ $page->id }}" data-toggle="tooltip" title="Edit">Edit</a>
+                    <a class="btn btn-danger" href="destroy/{{ $page->id }}" data-toggle="tooltip" title="Delete"
+                        onclick="return confirm('Are You Sure?')">Delete</a>
+                    {{-- <form action="destroy/{{ $page->id }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger" type="submit" data-toggle="tooltip"
                             title="Delete" onclick="return confirm('Are You Sure?')">Delete</button>
-                    </form>
+                    </form> --}}
                 </td>
             </tr>
             @endforeach

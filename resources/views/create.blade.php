@@ -1,10 +1,12 @@
-<link rel="stylesheet" href="{{ asset('assets/dist/css/bootstrap.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('assets/dist/css/bootstrap.min.css') }}">
 
 <form action="store" method="POST" enctype="multipart/form-data">
+
     @csrf
-    <div class="form-group">
+    <div class="form-group col-lg-6 mx-auto mt-3">
         <label for="">Title</label>
-        <input type="text" name="title" id="title" class="form-control" placeholder="Title">
+        <input type="text" name="title" id="title" class="form-control" placeholder="Title" autofocus>
         <label for="">Slug</label>
         <input type="text" name="slug" id="slug" class="form-control" placeholder="Slug">
         <label for="">Content</label>
@@ -17,7 +19,7 @@
             <option>Pending</option>
         </select>
     </div>
-    <div class="form-group mt-2">
+    <div class="form-group mt-2 col-lg-6 mx-auto">
         <button class="btn btn-primary">Create</button>
     </div>
 </form>

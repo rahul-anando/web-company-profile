@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Pages;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class PagesController extends Controller
 {
@@ -37,21 +38,38 @@ class PagesController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        // return $request->file('image')->store('images');
+
+        // $pages = new Pages;
+        // $pages->title = $request->input('title');
+        // $pages->slug = $request->input('slug');
+        // $pages->content = $request->input('content');
+        // $pages->image = $request->input('image');
+        // $pages->status = $request->input('status');
+        // $pages->save();
+        // if($request->hasfile('image'))
+        // {
+        //     $file = $request->file('image')->store('images');
+        //     $extension = $file->getClientOriginalExtension();
+        //     $filename = time().'.'.$extension;
+        //     $file->move('uploads/images/', $filename);
+        //     $pages->image = $filename;
+        // }
+
+
+        $validateddata = $request->validate([
             'title'     => 'required|string|max:255',
             'slug'      => 'required|string|max:255',
             'content'    => 'required',
             'image'    => 'image|mimes:jpeg,jpg,png|max:1024',
             'status'    => 'required',
         ]);
-        $data = Pages::create($request->all());
 
-        if($request->hasfile('image')) {
-            $request->file('image')->move('image/', $request->file('image')->getClientOriginalName());
-            $data->image = $request->file('image')->getClientOriginalName();
-            $data->save();
+        if($request->file('image')) {
+            $validateddata['image'] = $request->file('image')->store('images');
         }
-        return redirect('/pages');
+        Pages::create($validateddata);
+        return redirect('pages');
     }
 
     /**
@@ -85,17 +103,55 @@ class PagesController extends Controller
      */
     public function update(Request $request , Pages $pages)
     {
-        {
-            $pages->update([
-                'title' => request()->title,
-                'slug' => request()->slug,
-                'content' => request()->content,
-                'image' => request()->image,
-                'status' => request()->status,
-            ]);
+        $rules = [
+            'title'     => 'required|string|max:255',
+            'slug'      => 'required|string|max:255',
+            'content'    => 'required',
+            'image'    => 'image|mimes:jpeg,jpg,png|max:1024',
+            'status'    => 'required',
+        ];
 
-            return redirect('/pages');
+
+        $validateddata =$request->validate($rules);
+        if($request->file('image')) {
+            $validateddata['image'] = $request->file('image')->store('images');
         }
+        Pages::where('id', $pages->id)
+            ->update($validateddata);
+
+        return redirect('pages');
+        // return $request->file('image')->store('images');
+        // $pages = Pages::find($id);
+        // $pages->title = $request->input('title');
+        // $pages->slug = $request->input('slug');
+        // $pages->content = $request->input('content');
+        // if($request->hasfile('image'))
+        // {
+        //     $delete = 'uploads/images/'.$pages->image;
+        //     if(File::exists($delete))
+        //     {
+        //         File::delete($delete);
+        //     }
+        //     $file = $request->file('image');
+        //     $extension = $file->getClientOriginalExtension();
+        //     $filename = time().'.'.$extension;
+        //     $file->move('uploads/images/', $filename);
+        //     $pages->image = $filename;
+        // }
+        // $pages->status = $request->input('status');
+        // $pages->update();
+        // return redirect('pages');
+        // {
+        //     $pages->update([
+        //         'title' => request()->title,
+        //         'slug' => request()->slug,
+        //         'content' => request()->content,
+        //         'image' => request()->image,
+        //         'status' => request()->status,
+        //     ]);
+
+        //     return redirect('/pages');
+        // }
     }
 
     /**
@@ -104,9 +160,23 @@ class PagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pages $pages)
+    public function destroy($id)
+        {
+            $pages = Pages::find($id);
+            $delete = 'storage/'.$pages->image;
+            if(File::exists($delete))
+            {
+                File::delete($delete);
+            }
+            $pages->delete();
+            return redirect('pages');
+        }
+    public function delete(Pages $pages)
     {
-        $pages->delete();
-        return redirect('pages');
+        if($pages->oldImage) {
+            Storage::delete($pages->oldImage);
+        }
+        Pages::destroy($pages->id);
+        return redirect()->back();
     }
 }
