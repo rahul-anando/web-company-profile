@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\GaleriesController;
+use App\Http\Controllers\ArticlesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,11 @@ use App\Http\Controllers\GaleriesController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('');
+});
+
+Route::get('/oy', function () {
+    return view('edit');
 });
 // Route::get('/create', function () {
 //     return view('create');
@@ -41,5 +46,16 @@ Route::prefix('galeries/')->name('galeries.')->group(function () {
     Route::put('update/{galeries:id}', [GaleriesController::class, 'update'])->name('update');
     
 });
+Route::prefix('articles/')->name('galeries.')->group(function () {
+    Route::get('/index', [ArticlesController::class, 'index']);
+    Route::get('/create', [ArticlesController::class, 'create']);
+    Route::post('/store', [ArticlesController::class, 'store'])->name('store');
+    Route::delete('delete/{articles:id}', [ArticlesController::class, 'delete'])->name('delete');
+    Route::get('edit/{articles:id}', [ArticlesController::class, 'edit'])->name('edit');
+    Route::put('update/{articles:id}', [ArticlesController::class, 'update'])->name('edit');
+});
+
+
+
 
 
