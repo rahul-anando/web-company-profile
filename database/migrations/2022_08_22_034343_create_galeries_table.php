@@ -16,7 +16,7 @@ class CreateGaleriesTable extends Migration
         Schema::create('galeries', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->text('image')->nullable();
             $table->enum('status', ['publish', 'pending']);
             $table->timestamps();

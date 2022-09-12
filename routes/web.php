@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\GaleriesController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +29,15 @@ Route::prefix('galeries/')->name('galeries.')->group(function () {
     Route::put('update/{galeries:id}', [GaleriesController::class, 'update'])->name('update');
 
 });
+
+Route::prefix('posts/')->name('posts.')->group(function () {
+    Route::get('/', [PostController::class, 'index'])->name('index');
+    Route::get('create', [PostController::class, 'create'])->name('create');
+    Route::post('store', [PostController::class, 'store'])->name('store');
+    Route::delete('delete/{posts:id}', [PostController::class, 'delete'])->name('delete');
+    Route::get('edit/{posts:id}', [PostController::class, 'edit'])->name('edit');
+    Route::put('update/{posts:id}', [PostController::class, 'update'])->name('update');
+
+});
+
 
