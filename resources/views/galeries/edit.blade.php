@@ -28,7 +28,7 @@
 
             <div class="mb-3">
                 <label for="image">Image</label>
-                <input type="hidden" name="oldImage" value="{{ $galeries->image }}">
+                {{-- <input type="hidden" name="oldImage" value="{{ $galeries->image }}"> --}}
                 @if ($galeries->image)
                     <img src="{{ asset('uploads/' . $galeries->image) }}" class="img-fluid mb-3 col-sm-5 d-block">
                 @endif

@@ -37,18 +37,25 @@
                             @method('put')
                             <div class="form-group">
                                 <label><strong>Name :</strong></label>
-                                <input type="text" name="name" class="form-control" value="{{ $posts->name }}" />
+                                <input type="text" name="name" id="name" class="form-control"
+                                    value="{{ $posts->name }}" />
                             </div>
                             <div class="form-group">
-                                <label><strong>Category :</strong></label><br>
-                                    <input type="text" class="form-control mb-3" name="category[]">
-                                    <input type="text" class="form-control mb-3" name="category[]">
-                                    <input type="text" class="form-control mb-3" name="category[]">
-                                    <input type="text" class="form-control mb-3" name="category[]">
+                                <label><strong>Slug</strong></label>
+                                <input type="text" name="slug" id="slug" class="form-control"
+                                    value="{{ $posts->name }}" />
                             </div>
+                            @php
+                                $content = json_decode($posts->content, true);
+                            @endphp
                             <div class="form-group">
                                 <label><strong>Description :</strong></label>
-                                <textarea class="form-control" rows="4" cols="40" name="description">{{ $posts->description }}</textarea>
+                                <textarea class="form-control" rows="4" cols="40" name="description" id="description">{{$content['description']}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <img src="{{ asset('uploads/' . $content['image']) }}" class="img-fluid mb-3 col-sm-5 d-block">
+                                <label><strong>Content :</strong></label><br>
+                                <input type="file" class="form-control mb-3" name="content" id="content">
                             </div>
                             <div class="form-group text-center">
                                 <button type="submit" class="btn btn-success btn-sm">Save</button>

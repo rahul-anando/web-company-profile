@@ -34,19 +34,19 @@
                         <table class="table table-bordered">
                             <tr>
                                 <th>Name</th>
-                                <th>Category</th>
-                                <th>Description</th>
+                                <th>Slug</th>
+                                <th>Content</th>
+                                <th>Aksi</th>
+                                {{-- <th>Description</th> --}}
                             </tr>
                             @foreach ($posts as $post)
                                 <tr>
                                     <td>{{ $post->name }}</td>
-
-                                    <td>
-                                        @foreach ($post->category as $value)
-                                            {{ $value }}
-                                        @endforeach
-                                    </td>
-                                    <td>{{ $post->description }}</td>
+                                    <td>{{ $post->slug }}</td>
+                                    @php
+                                        $content = json_decode($post->content, true);
+                                    @endphp
+                                    <td><img src="{{ asset('uploads/' . $content['image']) }}" style="width: 60px"></td>
                                     <td class="d-flex">
                                         <a class="btn btn-warning me-2"
                                             href="{{ route('posts.edit', $post->id) }}">Edit</a>
@@ -60,6 +60,8 @@
                                 </tr>
                             @endforeach
                         </table>
+
+                        {{-- {{dump($content['image']);}} --}}
                     </div>
                 </div>
             </div>

@@ -30,18 +30,19 @@
                             @csrf
                             <div class="form-group">
                                 <label><strong>Name :</strong></label>
-                                <input type="text" name="name" class="form-control"/>
+                                <input type="text" name="name" id="name" class="form-control"/>
                             </div>
                             <div class="form-group">
-                                <label><strong>Category :</strong></label><br>
-                                <input type="text" class="form-control mb-3" name="category[]" >
-                                <input type="text" class="form-control mb-3" name="category[]" >
-                                <input type="text" class="form-control mb-3" name="category[]" >
-                                <input type="text" class="form-control mb-3" name="category[]" >
+                                <label><strong>Slug</strong></label>
+                                <input type="text" name="slug" id="slug" class="form-control"/>
                             </div>
                             <div class="form-group">
                                 <label><strong>Description :</strong></label>
-                                <textarea class="form-control" rows="4" cols="40" name="description"></textarea>
+                                <textarea class="form-control" rows="4" cols="40" name="description" id="description"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label><strong>Category :</strong></label><br>
+                                <input type="file" class="form-control mb-3" name="content" id="content">
                             </div>
                             <div class="form-group text-center">
                                 <button type="submit" class="btn btn-success btn-sm">Save</button>
