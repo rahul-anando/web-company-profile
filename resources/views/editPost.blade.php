@@ -54,7 +54,7 @@
                             </div>
                             <div class="form-group">
                                 <img src="{{ asset('uploads/' . $content['image']) }}" class="img-fluid mb-3 col-sm-5 d-block">
-                                <label><strong>Content :</strong></label><br>
+                                <label><strong>Image :</strong></label><br>
                                 <input type="file" class="form-control mb-3" name="content" id="content">
                             </div>
                             <div class="form-group text-center">

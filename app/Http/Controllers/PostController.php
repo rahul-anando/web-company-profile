@@ -122,7 +122,7 @@ class PostController extends Controller
 
             $json = [
                 'image' => $content,
-                'description' => $request->desciption
+                'description' => $request->description
             ];
 
             $object['content'] = json_encode($json, JSON_UNESCAPED_SLASHES);
@@ -134,6 +134,7 @@ class PostController extends Controller
         }
 
         $current->update($object);
+        // dd($object);
 
         return redirect('posts');
 
