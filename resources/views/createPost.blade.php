@@ -56,7 +56,7 @@
                                 <textarea class="form-control" rows="4" cols="40" name="description" id="description"></textarea>
                             </div>
                             <div class="form-group">
-                                <label><strong>Category :</strong></label><br>
+                                <label><strong>Image :</strong></label><br>
                                 <input type="file" class="form-control mb-3" name="content" id="content">
                             </div>
                             <div class="form-group text-center">
