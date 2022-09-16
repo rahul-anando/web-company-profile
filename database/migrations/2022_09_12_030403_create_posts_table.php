@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGaleriesTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateGaleriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('galeries', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('slug')->unique();
-            $table->text('image')->nullable();
-            $table->enum('status', ['publish', 'pending']);
+            $table->string('name');
+            $table->string('slug');
+            $table->text('content');
+            // $table->text('description');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateGaleriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('galeries');
+        Schema::dropIfExists('posts');
     }
 }

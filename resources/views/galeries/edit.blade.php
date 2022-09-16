@@ -28,12 +28,11 @@
 
             <div class="mb-3">
                 <label for="image">Image</label>
-                <input type="hidden" name="oldImage" value="{{ $galeries->image }}">
+                {{-- <input type="hidden" name="oldImage" value="{{ $galeries->image }}"> --}}
                 @if ($galeries->image)
                     <img src="{{ asset('uploads/' . $galeries->image) }}" class="img-fluid mb-3 col-sm-5 d-block">
                 @endif
-                {{-- <img class="img-preview img-fluid mb-3 col-sm-5"> --}}
-                <input type="file" class="form-control mb-3" name="image" id="image" onchange="previewImage()">
+                <input type="file" class="form-control mb-3" name="image" id="image">
             </div>
 
             <div class="mb-3">
@@ -44,7 +43,7 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button class="btn btn-primary" type="submit">Submit</button>
         </form>
     </div>
 </body>

@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Galeries;
 use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\Storage;
-use Storage;
-use File;
-use Validator;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+
 class GaleriesController extends Controller
 {
     public function index()
     {
+        // $galeries = Galeries::get();
+        // return view('index', compact('galeries'));
+
         $galeries = Galeries::get();
         $data['galeries'] = $galeries;
         return view('galeries.index', $data);
@@ -24,24 +26,37 @@ class GaleriesController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+
+        $validatedData = $request->validate([
             'title'   => 'required|max:255',
             'slug'    => 'required|max:255',
             'image'   => 'image|file|max:1024',
             'status'  => 'required'
         ]);
+
         $object = array(
             'title' => $request->title,
             'slug' => $request->slug,
             'status' => $request->status,
         );
 
-        
-        if ($request->has('image')) {
+        if($request->has('image')) {
             $image = Storage::disk('uploads')->put('galeries', $request->image);
 
             $object['image'] = $image;
         }
+
+        Galeries::create($object);
+
+        return redirect('galeries')->with('success', 'Berhasil ditambahkan!');
+
+        // $data = Galeries::create($request->all());
+
+        // if($request->hasfile('image')) {
+        //     $request->file('image')->move('image/', $request->file('image')->getClientOriginalName());
+        //     $data->image = $request->file('image')->getClientOriginalName();
+        //     $data->save();
+        // }
 
         Galeries::create($object);
         return redirect('galeries')->with('success', 'Berhasil ditambahkan!');
@@ -55,6 +70,7 @@ class GaleriesController extends Controller
 
     public function edit(Galeries $galeries)
     {
+        // return view('edit', compact('galeries'));
         $data['galeries'] = $galeries;
         return view('galeries.edit', $data);
     }
@@ -75,7 +91,7 @@ class GaleriesController extends Controller
         ]);
 
         $current = Galeries::findOrFail($galeries->id);
-        
+
         $object = array(
             'title' => $request->title,
             'slug' => $request->slug,
@@ -100,6 +116,14 @@ class GaleriesController extends Controller
         Galeries::destroy($galeries->id);
 
         return redirect()->back();
+
+        // if($galeries->image) {
+        //     Storage::delete($galeries->image);
+        // }
+
+        // Galeries::destroy($galeries->id);
+
+        // return redirect()->back();
 
         // $galeries->delete();
     }

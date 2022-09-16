@@ -26,7 +26,7 @@
             <div class="mb-3">
                 <label for="image">Image</label>
                 <img class="img-preview img-fluid mb-3 col-sm-5">
-                <input type="file" class="form-control mb-3" name="image" id="image" onchange="previewImage()">
+                <input type="file" class="form-control mb-3" name="image" id="image">
             </div>
 
             <div class="mb-3">
@@ -41,7 +41,7 @@
         </form>
     </div>
 
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
 
         fuction previewImage {
             const image = document.querySelector('#image');
@@ -58,7 +58,7 @@
         }
 
 
-    </script>
+    </script> --}}
 
 </body>
 

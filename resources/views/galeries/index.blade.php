@@ -29,13 +29,12 @@
                     <tr>
                         <td>{{ $galeri->title }}</td>
                         <td>{{ $galeri->slug }}</td>
-                        {{-- <td>{{ $galeri->image }}</td> --}}
                         <td><img src="{{ asset('uploads/' . $galeri->image) }}" alt="" style="width: 60px"></td>
                         <td>{{ $galeri->status }}</td>
                         <td class="d-flex">
-                            <a class="btn btn-success me-2" href="{{route('galeries.edit',$galeri->id)}}">Edit</a>
+                            <a class="btn btn-success me-2" href="{{ route('galeries.edit', $galeri->id) }}">Edit</a>
 
-                        <form action="{{route('galeries.delete',$galeri->id)}}" method="POST">
+                        <form action="{{ route('galeries.delete',$galeri->id) }}" method="POST">
                            @csrf
                            @method('DELETE')
                            <button class="btn btn-danger" type="submit">Hapus</button>
