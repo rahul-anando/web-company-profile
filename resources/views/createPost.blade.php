@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Form Create Posts</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha256-aAr2Zpq8MZ+YA/D6JtRD3xtrwpEz2IqOS+pWD/7XKIw=" crossorigin="anonymous" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha256-OFRAJNoaD8L3Br5lglV7VyLRf0itmoBzWUoM+Sji4/8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha256-aAr2Zpq8MZ+YA/D6JtRD3xtrwpEz2IqOS+pWD/7XKIw=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha256-OFRAJNoaD8L3Br5lglV7VyLRf0itmoBzWUoM+Sji4/8=" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <div class="container">
         <div class="row">
@@ -30,11 +35,21 @@
                             @csrf
                             <div class="form-group">
                                 <label><strong>Name :</strong></label>
-                                <input type="text" name="name" id="name" class="form-control"/>
+                                <input type="text" name="name" id="name" class="form-control" />
+                                @error('name')
+                                    <span class="text-danger small">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label><strong>Slug</strong></label>
-                                <input type="text" name="slug" id="slug" class="form-control"/>
+                                <input type="text" name="slug" id="slug" class="form-control" />
+                                @error('slug')
+                                    <span class="text-danger small">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label><strong>Description :</strong></label>
@@ -54,4 +69,5 @@
         </div>
     </div>
 </body>
+
 </html>

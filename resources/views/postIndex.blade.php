@@ -54,7 +54,7 @@
                                         <form action="{{ route('posts.delete', $post->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-danger" type="submit">Hapus</button>
+                                            <button class="btn btn-danger" type="submit" onclick="return confirm('Yakin mau dihapus qaqa?')">Hapus</button>
                                         </form>
                                     </td>
                                 </tr>

@@ -43,14 +43,14 @@
                             <div class="form-group">
                                 <label><strong>Slug</strong></label>
                                 <input type="text" name="slug" id="slug" class="form-control"
-                                    value="{{ $posts->name }}" />
+                                    value="{{ $posts->slug }}" />
                             </div>
                             @php
                                 $content = json_decode($posts->content, true);
                             @endphp
                             <div class="form-group">
                                 <label><strong>Description :</strong></label>
-                                <textarea class="form-control" rows="4" cols="40" name="description" id="description">{{$content['description']}}</textarea>
+                                <input type="text" class="form-control" rows="4" cols="40" name="description" id="description" value="{{($content['description'])}}">
                             </div>
                             <div class="form-group">
                                 <img src="{{ asset('uploads/' . $content['image']) }}" class="img-fluid mb-3 col-sm-5 d-block">

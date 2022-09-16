@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
@@ -32,6 +33,22 @@ class PostController extends Controller
     public function store(Request $request)
     {
         // $input = $request->all();
+
+        // $validated = $request->validate([
+        //     'title' => 'required|unique:posts|max:255',
+        //     'body' => 'required',
+        // ]);
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'slug' => 'required|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $object = [
             'name' => $request->name,
