@@ -202,9 +202,11 @@
             <i class="far fa-user"></i> Profile
           </a>
           <div class="dropdown-divider"></div>
-          <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger">
-            <i class="fas fa-sign-out-alt"></i> Logout
-          </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
+              @csrf
+              <button type="submit" class="btn dropdown-item text-danger">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
         </div>
       </li>
     </ul>
