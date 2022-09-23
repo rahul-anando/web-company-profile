@@ -22,10 +22,6 @@ Route::get('/main', function () {
     return view('main');
 })->middleware('auth');
 
-// Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-// Route::post('/login', [LoginController::class, 'authenticate'])->name('login.auth');
-// Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
