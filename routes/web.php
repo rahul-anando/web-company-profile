@@ -20,20 +20,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/main', function () {
-    return view('main');
-});
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::prefix('users/')->name('users.')->group(function () {
-    Route::get('/', [UserController::class, 'index'])->name('index');
-    Route::get('create', [UserController::class, 'create'])->name('create');
-    Route::post('store', [UserController::class, 'store'])->name('store');
-    Route::delete('delete/{users:id}', [UserController::class, 'delete'])->name('delete');
-    Route::get('edit/{users:id}', [UserController::class, 'edit'])->name('edit');
-    Route::put('update/{users:id}', [UserController::class, 'update'])->name('update');
+Route::middleware('auth')->group(function () {
 
+    Route::get('/main', function () {
+        return view('main');
+    });
+
+    Route::prefix('users/')->name('users.')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('index');
+        Route::get('create', [UserController::class, 'create'])->name('create');
+        Route::post('store', [UserController::class, 'store'])->name('store');
+        Route::delete('delete/{users:id}', [UserController::class, 'delete'])->name('delete');
+        Route::put('update/{users:id}', [UserController::class, 'update'])->name('update');
+        Route::get('edit/{users:id}', [UserController::class, 'edit'])->name('edit');
+    });
 });

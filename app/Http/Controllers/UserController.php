@@ -63,7 +63,7 @@ class UserController extends Controller
     {
         $data['users'] = $users;
 
-        return view('user.edit', $data);
+        return view('edit', $data);
     }
 
     public function update(Request $request, User $users)

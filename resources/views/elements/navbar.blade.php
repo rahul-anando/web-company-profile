@@ -19,6 +19,7 @@
               <button type="submit" class="btn dropdown-item text-danger">
                 <i class="fas fa-sign-out-alt"></i> Logout
             </button>
+          </form>
         </div>
       </li>
     </ul>

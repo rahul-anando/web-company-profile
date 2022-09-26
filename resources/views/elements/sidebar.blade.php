@@ -25,6 +25,6 @@
               <li><a class="nav-link" href="#">Top </a></li>
             </ul>
           </li>
-          <li class="active"><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
+          <li class="active"><a class="nav-link" href="{{ route('home') }}"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
     </aside>
   </div>
