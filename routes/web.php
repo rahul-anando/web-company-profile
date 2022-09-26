@@ -39,3 +39,7 @@ Route::middleware('auth')->group(function () {
         Route::get('edit/{users:id}', [UserController::class, 'edit'])->name('edit');
     });
 });
+
+// Route::get('/coba', function () {
+//     return view('edit');
+// });

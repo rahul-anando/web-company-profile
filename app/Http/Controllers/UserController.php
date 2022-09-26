@@ -63,12 +63,31 @@ class UserController extends Controller
     {
         $data['users'] = $users;
 
-        return view('edit', $data);
+        return view('user.edit', $data);
     }
 
     public function update(Request $request, User $users)
     {
+        $validator = Validator::make($request->all(),[
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'string|min:8|',
+        ]);
+
         $current = User::findOrFail($users->id);
+
+        $object = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            // 'password' => $request->password,
+            'remember_token' => Str::random(60)
+        ];
+
+        $current->update($object);
+
+        return redirect('users');
+
     }
 
     public function delete(User $users)

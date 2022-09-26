@@ -19,7 +19,6 @@
                                 <th>No</th>
                                 <th>Nama</th>
                                 <th>Email</th>
-                                <th>Role</th>
                                 <th>Action</th>
                             </tr>
                             @php $no = 1; @endphp
@@ -28,7 +27,6 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $no++ }}</td>
                                     <td class="d-flex">
                                         <a class="btn btn-outline-success mr-2"
                                             href="{{ route('users.edit', $user->id) }}">Edit</a>
