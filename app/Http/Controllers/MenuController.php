@@ -68,8 +68,8 @@ class MenuController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'name' => 'required|string|max:255',
-            'link' => 'required|string|email|max:255|unique:users',
-            // 'is_outbound' => 'string|min:8|',
+            'link' => 'required|string|',
+            'is_outbound' => 'required',
             'parent' => 'required',
             'index' => 'required',
         ]);
