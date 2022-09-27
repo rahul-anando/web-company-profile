@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 
@@ -37,6 +39,15 @@ Route::middleware('auth')->group(function () {
         Route::delete('delete/{users:id}', [UserController::class, 'delete'])->name('delete');
         Route::put('update/{users:id}', [UserController::class, 'update'])->name('update');
         Route::get('edit/{users:id}', [UserController::class, 'edit'])->name('edit');
+    });
+
+    Route::prefix('menus/')->name('menus.')->group(function () {
+        Route::get('/', [MenuController::class, 'index'])->name('index');
+        Route::get('create', [MenuController::class, 'create'])->name('create');
+        Route::post('store', [MenuController::class, 'store'])->name('store');
+        Route::delete('delete/{menus:id}', [MenuController::class, 'delete'])->name('delete');
+        Route::put('update/{menus:id}', [MenuController::class, 'update'])->name('update');
+        Route::get('edit/{menus:id}', [MenuController::class, 'edit'])->name('edit');
     });
 });
 

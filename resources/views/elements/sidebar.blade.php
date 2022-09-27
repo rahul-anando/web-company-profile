@@ -19,7 +19,7 @@
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Management</span></a>
             <ul class="dropdown-menu">
               <li><a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-user"></i>User</a></li>
-              <li><a class="nav-link" href="#">Transparent Sidebar</a></li>
+              <li><a class="nav-link" href="{{ route('menus.index') }}"><i class="fas fa-list"></i>Menus</a></li>
               <li><a class="nav-link" href="#">Top Navigation</a></li>
               <li><a class="nav-link" href="#">Navigation</a></li>
               <li><a class="nav-link" href="#">Top </a></li>

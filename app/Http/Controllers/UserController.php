@@ -74,6 +74,12 @@ class UserController extends Controller
             'password' => 'string|min:8|',
         ]);
 
+        // if ($validator->fails()) {
+        //     return redirect()->back()
+        //         ->withErrors($validator)
+        //         ->withInput();
+        // }
+
         $current = User::findOrFail($users->id);
 
         $object = [
