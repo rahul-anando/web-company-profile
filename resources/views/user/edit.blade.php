@@ -45,7 +45,7 @@
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-primary col-2 mb-3">Submit</button>
+                        <button type="submit" class="btn btn-primary col-2 mb-3">Update</button>
                     </div>
                 </form>
             </div>

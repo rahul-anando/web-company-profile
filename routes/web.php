@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 
@@ -48,6 +49,15 @@ Route::middleware('auth')->group(function () {
         Route::delete('delete/{menus:id}', [MenuController::class, 'delete'])->name('delete');
         Route::put('update/{menus:id}', [MenuController::class, 'update'])->name('update');
         Route::get('edit/{menus:id}', [MenuController::class, 'edit'])->name('edit');
+    });
+
+    Route::prefix('pages/')->name('pages.')->group(function () {
+        Route::get('/', [PageController::class, 'index'])->name('index');
+        Route::get('create', [PageController::class, 'create'])->name('create');
+        Route::post('store', [PageController::class, 'store'])->name('store');
+        Route::delete('delete/{pages:id}', [PageController::class, 'delete'])->name('delete');
+        Route::put('update/{pages:id}', [PageController::class, 'update'])->name('update');
+        Route::get('edit/{pages:id}', [PageController::class, 'edit'])->name('edit');
     });
 });
 

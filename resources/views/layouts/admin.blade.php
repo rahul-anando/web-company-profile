@@ -55,5 +55,7 @@
   <script src="{{ asset('assets/js/custom.js') }}"></script>
 
   <!-- Page Specific JS File -->
+  <script src="{{ asset('assets/js/page/bootstrap-modal.js') }}"></script>
+
 </body>
 </html>

@@ -18,7 +18,7 @@
                             @csrf
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="name">Name</label>
-                                <input id="name" type="name" class="form-control" name="name" required autocomplete="name" autofocus placeholder="Input Name">
+                                <input id="name" type="text" class="form-control" name="name" required autocomplete="name" autofocus placeholder="Input Name">
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         {{ $message }}

@@ -20,9 +20,9 @@
             <ul class="dropdown-menu">
               <li><a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-user"></i>User</a></li>
               <li><a class="nav-link" href="{{ route('menus.index') }}"><i class="fas fa-list"></i>Menus</a></li>
-              <li><a class="nav-link" href="#">Top Navigation</a></li>
-              <li><a class="nav-link" href="#">Navigation</a></li>
-              <li><a class="nav-link" href="#">Top </a></li>
+              <li><a class="nav-link" href="{{ route('pages.index') }}"><i class="fas fa-file"></i></i>Pages</a></li>
+              <li><a class="nav-link" href="#">Sections</a></li>
+              <li><a class="nav-link" href="#">Templates </a></li>
             </ul>
           </li>
           <li class="active"><a class="nav-link" href="{{ route('home') }}"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
