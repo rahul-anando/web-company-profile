@@ -146,7 +146,15 @@ return [
             'rule-name' => 'custom-message',
         ],
         'name' => [
-            'required' => 'Isikan name !',
+            'required' => 'Field name harus diisi!',
+        ],
+        'email' => [
+            'required' => 'Field email harus diisi!',
+        ],
+        'password' => [
+            'required' => 'Kata sandi harus diisi!',
+            'min' => 'Kata sandi minimal 8 karakter.',
+            'confirmed' => 'Konfirmasi kata sandi tidak cocok.'
         ],
     ],
 

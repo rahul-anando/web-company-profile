@@ -18,27 +18,27 @@
                             @csrf
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="title">Title</label>
-                                <input id="title" type="text" class="form-control" name="title" required autocomplete="title" autofocus placeholder="Input Title">
+                                <input id="title" type="text" class="form-control" name="title" autocomplete="title" autofocus placeholder="Input Title">
                                 @error('title')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-danger small" role="alert">
                                         {{ $message }}
                                     </span>
                                 @enderror
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="slug">Slug</label>
-                                <input id="slug" type="text" class="form-control" name="slug" required autocomplete="slug" autofocus placeholder="Input Slug">
+                                <input id="slug" type="text" class="form-control" name="slug" autocomplete="slug" autofocus placeholder="Input Slug">
                                 @error('slug')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-danger small" role="alert">
                                         {{ $message }}
                                     </span>
                                 @enderror
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="meta">Meta</label>
-                                <input id="meta" type="text" class="form-control" name="meta" required autocomplete="meta" autofocus placeholder="Input Meta">
+                                <input id="meta" type="text" class="form-control" name="meta" autocomplete="meta" autofocus placeholder="Input Meta">
                                 @error('meta')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="text-danger small" role="alert">
                                         {{ $message }}
                                     </span>
                                     @enderror
@@ -47,7 +47,7 @@
                                     <label class="form-control-placeholder" for="image">Image</label>
                                     <input id="image" type="file" class="form-control" name="image">
                                     @error('image')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-danger small" role="alert">
                                         {{ $message }}
                                     </span>
                                     @enderror

@@ -18,30 +18,38 @@
                             @csrf
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="name">Name</label>
-                                <input id="name" type="text" class="form-control" name="name" required autocomplete="name" autofocus placeholder="Input Name">
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        {{ $message }}
-                                    </span>
-                                @enderror
-                            </div>
+                                <input id="name" type="text" class="form-control" name="name"
+                                    autocomplete="name" autofocus placeholder="Input Name">
+                                    @error('name')
+                                        <span class="text-danger small" role="alert">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
+                                </div>
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="email">Email</label>
-                                <input id="email" type="email" class="form-control" name="email" required autocomplete="email" autofocus placeholder="Input Email">
+                                <input id="email" type="email" class="form-control" name="email"
+                                    autocomplete="email" autofocus placeholder="Input Email">
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-danger small" role="alert">
                                         {{ $message }}
                                     </span>
                                 @enderror
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="password">Password</label>
-                                <input id="password" type="password" class="form-control" name="password" required autocomplete="password" autofocus placeholder="Input Password">
+                                <input id="password" type="password" class="form-control" name="password"
+                                    autocomplete="password" autofocus placeholder="Input Password">
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-danger small" role="alert">
                                         {{ $message }}
                                     </span>
                                 @enderror
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="password-confirm" class="form-control-placeholder">Confirm Password</label>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password" placeholder="Confirmation Password">
                             </div>
 
                             <button type="submit" class="btn btn-primary col-2 mb-3">Submit</button>

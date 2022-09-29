@@ -18,7 +18,6 @@
     <div class="section-body">
     </div>
   </section>
-
 @endsection
 
 {{-- @section('content')

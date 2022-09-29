@@ -26,18 +26,18 @@ class PageController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),[
-            'title' => 'required|max:255',
+            'title' => 'required',
             'slug' => 'required',
             'meta' => 'required',
             'image' => 'image|file|max:1024',
             'status' => 'required',
         ]);
 
-        // if ($validator->fails()) {
-        //     return redirect()->back()
-        //         ->withErrors($validator)
-        //         ->withInput();
-        // }
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $object = [
             'title' => $request->title,

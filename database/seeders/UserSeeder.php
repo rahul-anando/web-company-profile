@@ -22,5 +22,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('admin'),
             'remember_token' => Str::random(60),
         ]);
+
+        // \App\Models\User::factory(10)->create();
     }
 }

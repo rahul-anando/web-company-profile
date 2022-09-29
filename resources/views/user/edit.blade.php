@@ -21,7 +21,7 @@
                             <label class="form-control-placeholder" for="name">Name</label>
                             <input id="name" type="name" class="form-control" name="name" required autocomplete="name" autofocus value="{{ $users->name }}">
                             @error('name')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="text-danger small" role="alert">
                                     {{ $message }}
                                 </span>
                             @enderror
@@ -30,7 +30,7 @@
                             <label class="form-control-placeholder" for="email">Email</label>
                             <input id="email" type="email" class="form-control" name="email" required autocomplete="email" autofocus value="{{ $users->email }}">
                             @error('email')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="text-danger small" role="alert">
                                     {{ $message }}
                                 </span>
                             @enderror
@@ -39,7 +39,7 @@
                             <label class="form-control-placeholder" for="password">New Password</label>
                             <input id="password" type="password" class="form-control" name="password" autofocus>
                             @error('password')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="text-danger small" role="alert">
                                     {{ $message }}
                                 </span>
                             @enderror

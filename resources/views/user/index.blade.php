@@ -27,8 +27,8 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td class="d-flex">
-                                        <a class="btn btn-outline-success mr-2"
+                                    <td class="">
+                                        <a class="btn btn-outline-success me-2 mb-2"
                                             href="{{ route('users.edit', $user->id) }}">Edit</a>
 
                                         <form action="{{ route('users.delete', $user->id) }}" method="POST">
