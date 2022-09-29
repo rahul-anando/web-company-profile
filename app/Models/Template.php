@@ -13,4 +13,8 @@ class Template extends Model
         'blade',
         'image'
     ];
+
+    public function sections() {
+        return $this->hasMany(Section::class);
+    }
 }

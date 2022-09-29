@@ -16,4 +16,9 @@ class Page extends Model
         'image',
         'status'
     ];
+
+    public function sections()
+    {
+        return $this->hasMany(Section::class);
+    }
 }

@@ -21,7 +21,7 @@
               <li><a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-user"></i>User</a></li>
               <li><a class="nav-link" href="{{ route('menus.index') }}"><i class="fas fa-list"></i>Menus</a></li>
               <li><a class="nav-link" href="{{ route('pages.index') }}"><i class="fas fa-file"></i>Pages</a></li>
-              <li><a class="nav-link" href="#"><i class="fas fa-puzzle-piece"></i>Sections</a></li>
+              <li><a class="nav-link" href="{{ route('sections.index') }}"><i class="fas fa-puzzle-piece"></i>Sections</a></li>
               <li><a class="nav-link" href="{{ route('templates.index') }}"><i class="fas fa-table"></i>Templates </a></li>
             </ul>
           </li>

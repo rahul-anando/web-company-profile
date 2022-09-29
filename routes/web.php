@@ -7,6 +7,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SectionController;
 use App\Http\Controllers\TemplateController;
 
 /*
@@ -68,6 +69,15 @@ Route::middleware('auth')->group(function () {
         Route::delete('delete/{templates:id}', [TemplateController::class, 'delete'])->name('delete');
         Route::put('update/{templates:id}', [TemplateController::class, 'update'])->name('update');
         Route::get('edit/{templates:id}', [TemplateController::class, 'edit'])->name('edit');
+    });
+
+    Route::prefix('sections/')->name('sections.')->group(function () {
+        Route::get('/', [SectionController::class, 'index'])->name('index');
+        Route::get('create', [SectionController::class, 'create'])->name('create');
+        Route::post('store', [SectionController::class, 'store'])->name('store');
+        Route::delete('delete/{sections:id}', [SectionController::class, 'delete'])->name('delete');
+        Route::put('update/{sections:id}', [SectionController::class, 'update'])->name('update');
+        Route::get('edit/{sections:id}', [SectionController::class, 'edit'])->name('edit');
     });
 });
 
