@@ -19,7 +19,7 @@
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="name">Name</label>
                                 <input id="name" type="text" class="form-control" name="name"
-                                    autocomplete="name" autofocus placeholder="Input Name">
+                                    autocomplete="name" autofocus placeholder="Input Name" value="{{ old('name') }}">
                                     @error('name')
                                         <span class="text-danger small" role="alert">
                                             {{ $message }}
@@ -29,7 +29,7 @@
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="email">Email</label>
                                 <input id="email" type="email" class="form-control" name="email"
-                                    autocomplete="email" autofocus placeholder="Input Email">
+                                    autocomplete="email" autofocus placeholder="Input Email" value="{{ old('email') }}">
                                 @error('email')
                                     <span class="text-danger small" role="alert">
                                         {{ $message }}
