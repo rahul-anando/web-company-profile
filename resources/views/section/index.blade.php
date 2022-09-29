@@ -32,6 +32,8 @@
                                     <td>{{ $section->name }}</td>
                                     <td>{{ $section->slug }}</td>
                                     <td>{{ $section->content }}</td>
+                                    {{-- <td>{{ $section->page }}</td> --}}
+                                    {{-- <td>{{ $section->template }}</td> --}}
                                     <td>{{ $section->index }}</td>
                                     <td class="d-flex">
                                         <a class="btn btn-outline-success mr-2"
