@@ -10,10 +10,12 @@ use Illuminate\Support\Facades\File;
 
 class TemplateController extends Controller
 {
-    public function index()
+    public function index(Template $templates)
     {
         $templates = Template::all();
         $data['templates'] = $templates;
+
+        // dd($templates->toArray());
 
         return view('template.index', $data);
     }
