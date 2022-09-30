@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-    <section class="section">
+    {{-- <section class="section"> --}}
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -39,9 +39,59 @@
                                         {{-- <button class="btn btn-outline-success me-2 mb-2" id="btn-tambah "
                                             onclick="edit()">Edit</button> --}}
 
-                                        <button type="button" class="btn btn-outline-success me-2 mb-2"
-                                            data-toggle="modal" data-target="#modalEdit">Edit</button>
+                                        <button type="button" class="btn btn-outline-success me-2 mb-2" data-toggle="modal" data-target="#modalEdit">Edit</button>
 
+                                        <!-- Modal -->
+                                    <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modal-title">Edit Templates</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="card-body">
+                                                        <form action="{{ route('templates.update', ['templates' => $template->id]) }}" method="POST"
+                                                            enctype="multipart/form-data">
+                                                            <div class="card">
+                                                                @csrf
+                                                                @method('put')
+                                                                <div class="form-group mx-3">
+                                                                    <label class="form-control-placeholder" for="blade">Blade</label>
+                                                                    <input id="blade" type="text" class="form-control" name="blade" autocomplete="blade"
+                                                                        placeholder="Input Blade" value="{{ $template->blade }}">
+                                                                    @error('blade')
+                                                                        <span class="text-danger small" role="alert">
+                                                                            {{ $message }}
+                                                                        </span>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="form-group mx-3">
+                                                                    <label class="form-control-placeholder" for="image">Image</label>
+                                                                    @if ($template->image)
+                                                                        <img src="{{ asset('uploads/' . $template->image) }}" class="img-fluid mb-3 col-sm-5 d-block">
+                                                                    @endif
+                                                                    <input id="image" type="file" class="form-control" name="image">
+                                                                    @error('image')
+                                                                        <span class="text-danger small" role="alert">
+                                                                            {{ $message }}
+                                                                        </span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                                            </div>
+                                                    </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                         <form action="{{ route('templates.delete', $template->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
@@ -57,60 +107,8 @@
             </div>
         </div>
     </div>
-</section>
+{{-- </section> --}}
 
-<!-- Modal -->
-<div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modal-title">Edit Templates</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="card-body">
-                    {{-- <form action="{{ route('templates.update', ['templates' => $template->id]) }}" method="POST" --}}
-                    <form action="templates/update/{{ $template->id }}" method="POST" enctype="multipart/form-data">
-                        <div class="card">
-                            @csrf
-                            @method('put')
-                            <div class="form-group mx-3">
-                                <label class="form-control-placeholder" for="blade">Blade</label>
-                                <input id="blade" type="text" class="form-control" name="blade"
-                                    autocomplete="blade" placeholder="Input Blade" value="{{ $template->blade }}">
-                                @error('blade')
-                                    <span class="text-danger small" role="alert">
-                                        {{ $message }}
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group mx-3">
-                                <label class="form-control-placeholder" for="image">Image</label>
-                                @if ($template->image)
-                                    <img src="{{ asset('uploads/' . $template->image) }}"
-                                        class="img-fluid mb-3 col-sm-5 d-block">
-                                @endif
-                                <input id="image" type="file" class="form-control" name="image">
-                                @error('image')
-                                    <span class="text-danger small" role="alert">
-                                        {{ $message }}
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save changes</button>
-                        </div>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
