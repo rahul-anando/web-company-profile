@@ -53,7 +53,7 @@
                                         <th>No</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Action</th>
+                                        <th class="text-right">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -63,8 +63,8 @@
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
-                                            <td class="text-right">
-                                                <a class="btn btn-outline-success me-2 mb-2"
+                                            <td class="d-flex float-right">
+                                                <a class="btn btn-outline-success mr-2"
                                                     href="{{ route('users.edit', $user->id) }}">Edit</a>
 
                                                 <form action="{{ route('users.delete', $user->id) }}" method="POST">
