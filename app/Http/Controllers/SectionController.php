@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Section;
+use App\Models\Page;
+use App\Models\Template;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
@@ -20,7 +22,16 @@ class SectionController extends Controller
 
     public function create()
     {
-        return view('section.create');
+        $sections = Section::all();
+        $pages = Page::all();
+        $templates = Template::all();
+        $data['sections'] = $sections;
+        $data['pages'] = $pages;
+        $data['templates'] = $templates;
+
+        // dd($data);
+
+        return view('section.create', $data);
     }
 
     public function store(Request $request)

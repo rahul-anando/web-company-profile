@@ -9,9 +9,9 @@ class TemplateSeeder extends Seeder
 {
     public function run()
     {
-        Template::create([
-            'blade' => 'Test',
-            'image' => 'Tes2'
-        ]);
+        // Template::create([
+        //     'blade' => 'Test',
+        //     'image' => 'Tes2'
+        // ]);
     }
 }

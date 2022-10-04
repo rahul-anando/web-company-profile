@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('content')
 
-    <section class="section">
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -46,6 +45,14 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
+                            @if(session()->has('status'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('status') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
                             <a href="{{ route('users.create') }}" class="btn btn-primary float-left mb-4">Tambah Data</a>
                             <table id="myTable" class="table table-striped table-bordered">
                                 <thead>
@@ -84,6 +91,5 @@
             </div>
         </div>
     </div>
-</section>
 
 @endsection
