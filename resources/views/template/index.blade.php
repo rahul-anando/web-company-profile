@@ -120,7 +120,7 @@
                                 </div>
                             @endif
                             <button class="btn btn-primary float-left mb-3" id="btn-tambah " onclick="tambah()">Tambah Data</button>
-                            <table id="myTable" class="table table-striped table-bordered">
+                            <table id="myTable" class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>

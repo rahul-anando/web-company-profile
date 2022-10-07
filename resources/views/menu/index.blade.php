@@ -66,7 +66,7 @@
                                 </div>
                             @endif
                             <a href="{{ route('menus.create') }}" class="btn btn-primary float-left mb-4">Tambah Data</a>
-                            <table id="myTable" class="table table-striped table-bordered">
+                            <table id="myTable" class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>

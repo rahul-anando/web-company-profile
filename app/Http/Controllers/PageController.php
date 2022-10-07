@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Page;
+use App\Models\Section;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
@@ -52,23 +53,26 @@ class PageController extends Controller
             $object['image'] = $image;
         }
 
-        // dd($object);
+        // dd($request->toArray());
 
         Page::create($object);
 
         return redirect()->route('pages.index')->with('status', 'Data Pages berhasil ditambahkan!');
     }
 
-    public function show(Page $page)
+    public function show(Page $pages)
     {
-
+        // return view('page.detail', compact('pages'));
     }
 
-    public function edit(Page $pages)
+    public function edit(Page $pages, Section $sections)
     {
+        $sections = Section::all();
+        // $pages = Page::all();
         $data['pages'] = $pages;
+        $data['sections'] = $sections;
 
-        return view('page.edit', $data);
+        return view('page.detail', $data);
     }
 
     public function update(Request $request, Page $pages)
@@ -106,7 +110,7 @@ class PageController extends Controller
 
         $current->update($object);
 
-        return redirect('pages');
+        return redirect('pages')->with('status', 'Data Pages berhasil diupdate!');
     }
 
     public function delete(Page $pages)

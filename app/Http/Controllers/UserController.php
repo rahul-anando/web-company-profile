@@ -92,7 +92,7 @@ class UserController extends Controller
 
         $current->update($object);
 
-        return redirect('users');
+        return redirect('users')->with('status', 'Data User berhasil diupdate!');
 
     }
 

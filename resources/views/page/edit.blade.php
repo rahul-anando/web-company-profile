@@ -7,9 +7,9 @@
                 <div class="card">
                     <div class="card-header">
                     @section('title')
-                        Add Pages
+                        Edit Pages
                     @endsection
-                    <h4>Add Pages</h4>
+                    <h4>Edit Pages</h4>
                 </div>
                 <div class="card-body">
                     <a href="{{ route('pages.index') }}" class="btn btn-success float-right mb-3">Kembali</a>

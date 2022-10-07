@@ -15,7 +15,10 @@ class SectionController extends Controller
     public function index()
     {
         $sections = Section::all();
+        $pages = Page::all();
+        // $sections = Section::with('page')->get();
         $data['sections'] = $sections;
+        $data['pages'] = $pages;
 
         return view('section.index', $data);
     }
@@ -34,12 +37,12 @@ class SectionController extends Controller
         return view('section.create', $data);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Page $pages, Section $section)
     {
         $validator = Validator::make($request->all(),[
             'name' => 'required',
             'slug' => 'required',
-            'content' => 'required',
+            // 'content' => 'required',
             'index' => 'required',
         ]);
 
@@ -52,20 +55,24 @@ class SectionController extends Controller
         $object = [
             'name' => $request->name,
             'slug' => $request->slug,
-            'content' => $request->content,
+            // 'content' => $request->content,
+            'page_id' => $request->page_id,
+            // 'template_id' => $section->template_id,
             'index' => $request->index,
         ];
 
-        // if ($request->has('content')) {
-        //     $content = Storage::disk('uploads')->put('sections', $request->content);
+        if ($request->has('content')) {
+            $content = Storage::disk('uploads')->put('sections', $request->content);
 
-        //     $json = [
-        //         'image' => $content,
-        //     ];
+            $json = [
+                'image_about' => $content,
+                'content_about' => $content
+            ];
 
-        //     $object['content'] = json_encode($json, JSON_UNESCAPED_SLASHES);
-        // }
+            $object['content'] = json_encode($json, JSON_UNESCAPED_SLASHES);
+        }
 
+        dd($object);
         Section::create($object);
 
         return redirect()->route('sections.index')->with('status', 'Data Section berhasil ditambahkan!');
@@ -130,7 +137,7 @@ class SectionController extends Controller
 
         $current->update($object);
 
-        return redirect('sections');
+        return redirect('sections')->with('status', 'Data Section berhasil diupdate!');
 
     }
 

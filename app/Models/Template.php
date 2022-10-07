@@ -14,7 +14,8 @@ class Template extends Model
         'image'
     ];
 
-    public function sections() {
+    public function sections()
+    {
         return $this->hasMany(Section::class);
     }
 }

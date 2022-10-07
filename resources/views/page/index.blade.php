@@ -65,7 +65,7 @@
                                 </div>
                             @endif
                             <a href="{{ route('pages.create') }}" class="btn btn-primary float-left mb-4">Tambah Data</a>
-                            <table id="myTable" class="table table-striped table-bordered">
+                        <table id="myTable" class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -73,6 +73,7 @@
                                         <th>Slug</th>
                                         <th>Meta</th>
                                         <th>Image</th>
+                                        {{-- <th>Section</th> --}}
                                         <th>Status</th>
                                         <th class="text-right">Action</th>
                                     </tr>
@@ -87,15 +88,16 @@
                                             <td>{{ $page->meta }}</td>
                                             <td><img src="{{ asset('uploads/' . $page->image) }}" alt=""
                                                     style="width: 60px"></td>
-                                            @if ($page->status == 'pending')
-                                                <td>
-                                                    <div class="badge badge-warning">Pending</div>
-                                                </td>
-                                            @elseif($page->status == 'publish')
-                                                <td>
-                                                    <div class="badge badge-success">Publish</div>
-                                                </td>
-                                            @endif
+                                            {{-- <td><a href="{{ route('pages.show', $page->id) }}">Detail</a></td> --}}
+                                                        @if ($page->status == 'pending')
+                                                            <td>
+                                                                <div class="badge badge-warning">Pending</div>
+                                                            </td>
+                                                        @elseif($page->status == 'publish')
+                                                            <td>
+                                                                <div class="badge badge-success">Publish</div>
+                                                            </td>
+                                                        @endif
                                             <td class="d-flex float-right">
                                                 <a class="btn btn-outline-success mr-2"
                                                     href="{{ route('pages.edit', $page->id) }}">Edit</a>

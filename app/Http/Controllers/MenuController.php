@@ -49,7 +49,7 @@ class MenuController extends Controller
 
         Menu::create($object);
 
-        return redirect()->route('menus.index')->with('status', 'Data Menus berhasil ditambahkan!');
+        return redirect()->route('menus.index')->with('status', 'Data Menu berhasil ditambahkan!');
     }
 
     public function show($id)
@@ -92,7 +92,7 @@ class MenuController extends Controller
 
         $current->update($object);
 
-        return redirect('menus');
+        return redirect('menus')->with('status', 'Data Menu berhasil diupdate!');
 
     }
 

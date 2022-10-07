@@ -60,6 +60,7 @@ Route::middleware('auth')->group(function () {
         Route::delete('delete/{pages:id}', [PageController::class, 'delete'])->name('delete');
         Route::put('update/{pages:id}', [PageController::class, 'update'])->name('update');
         Route::get('edit/{pages:id}', [PageController::class, 'edit'])->name('edit');
+        // Route::get('show/{pages:id}', [PageController::class, 'show'])->name('show');
     });
 
     Route::prefix('templates/')->name('templates.')->group(function () {

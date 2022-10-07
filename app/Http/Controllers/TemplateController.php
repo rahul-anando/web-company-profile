@@ -50,7 +50,7 @@ class TemplateController extends Controller
 
         Template::create($object);
 
-        return redirect()->route('templates.index')->with('status', 'Data Templates berhasil ditambahkan!');
+        return redirect()->route('templates.index')->with('status', 'Data Template berhasil ditambahkan!');
 
     }
 
@@ -97,7 +97,7 @@ class TemplateController extends Controller
 
         $current->update($object);
 
-        return redirect('templates');
+        return redirect('templates')->with('status', 'Data Template berhasil diupdate!');
     }
 
     public function delete(Template $templates)

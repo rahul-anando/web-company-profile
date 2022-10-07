@@ -18,8 +18,8 @@ class CreateSectionsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->text('content')->nullable();
-            $table->foreignId('page_id')->nullable();
-            $table->foreignId('template_id')->nullable();
+            $table->foreignId('page_id')->references('id')->on('pages')->onDelete('cascade');
+            $table->foreignId('template_id')->references('id')->on('templates')->onDelete('cascade');
             $table->integer('index');
             $table->timestamps();
         });

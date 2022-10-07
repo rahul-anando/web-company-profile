@@ -85,7 +85,7 @@
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $section->name }}</td>
                                         <td>{{ $section->slug }}</td>
-                                        <td>{{ $section->content }}</td>
+                                        <td>{{ $section->page }}</td>
 
                                         {{-- <td>{{ $section->page }}</td> --}}
                                         {{-- <td>{{ $section->template }}</td> --}}

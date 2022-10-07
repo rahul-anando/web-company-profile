@@ -38,14 +38,14 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="content">Content</label>
-                                <input id="content" type="text" class="form-control" name="content">
+                                <input id="content" type="file" class="form-control" name="content">
                                 @error('content')
                                     <span class="text-danger small" role="alert">
                                         {{ $message }}
                                     </span>
                                 @enderror
                             </div>
-                            <div class="form-group mb-3">
+                            {{-- <div class="form-group mb-3">
                                 <label>Page</label>
                                 <select class="form-control form-control-lg" name="page_id">
                                 @foreach ($pages as $page)
@@ -56,7 +56,15 @@
                                     @endif
                                 @endforeach
                                 </select>
-                            </div>
+                            </div> --}}
+                            {{-- <div class="form-group mb-3">
+                                <label>Page</label>
+                                <select class="form-control form-control-lg" name="page_id">
+                                @foreach ($pages as $page)
+                                    <option value="{{ $page->title }}" selected>{{ $page->title }}</option>
+                                @endforeach
+                                </select>
+                            </div> --}}
                             <div class="form-group mb-3">
                                 <label>Template</label>
                                 <select class="form-control form-control-lg" name="template_id">
