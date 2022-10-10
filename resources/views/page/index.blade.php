@@ -53,8 +53,10 @@
                         </table>
                     </div>
                 </div> --}}
-                <div class="col-md-12">
                     <div class="card">
+                        <div class="card-body">
+                            <a href="{{ route('pages.create') }}" class="btn btn-primary">Tambah Data</a>
+                        </div>
                         <div class="card-body">
                             @if(session()->has('status'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -64,8 +66,7 @@
                                     </button>
                                 </div>
                             @endif
-                            <a href="{{ route('pages.create') }}" class="btn btn-primary float-left mb-4">Tambah Data</a>
-                        <table id="myTable" class="table table-striped">
+                        <table id="table-1" class="table table-striped table-md">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -98,11 +99,11 @@
                                                                 <div class="badge badge-success">Publish</div>
                                                             </td>
                                                         @endif
-                                            <td class="d-flex float-right">
+                                            <td class="text-right">
                                                 <a class="btn btn-outline-success mr-2"
                                                     href="{{ route('pages.edit', $page->id) }}">Edit</a>
 
-                                                <form action="{{ route('pages.delete', $page->id) }}" method="POST">
+                                                <form action="{{ route('pages.delete', $page->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="btn btn-outline-danger" type="submit"
@@ -115,7 +116,6 @@
                             </table>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
     </div>

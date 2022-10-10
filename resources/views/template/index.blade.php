@@ -108,8 +108,10 @@
                         </table>
                     </div>
                 </div> --}}
-                <div class="col-md-12">
                     <div class="card">
+                        <div class="card-body">
+                            <button class="btn btn-primary" id="btn-tambah " onclick="tambah()">Tambah Data</button>
+                        </div>
                         <div class="card-body">
                             @if(session()->has('status'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -119,14 +121,13 @@
                                     </button>
                                 </div>
                             @endif
-                            <button class="btn btn-primary float-left mb-3" id="btn-tambah " onclick="tambah()">Tambah Data</button>
-                            <table id="myTable" class="table table-striped">
+                            <table id="table-1" class="table table-striped table-md">
                                 <thead>
                                     <tr>
                                         <th>No</th>
                                         <th>Blade</th>
                                         <th>Image</th>
-                                        <th>Action</th>
+                                        <th class="text-right">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -137,7 +138,7 @@
                                         <td>{{ $template->blade }}</td>
                                         <td><img src="{{ asset('uploads/' . $template->image) }}" alt=""
                                                 style="width: 60px"></td>
-                                        <td class="d-flex">
+                                        <td class="text-right">
                                             <button type="button" class="btn btn-outline-success mr-2" data-toggle="modal" data-target="#modalEdit">Edit</button>
 
                                         <!-- Modal -->
@@ -190,7 +191,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                                <form action="{{ route('templates.delete', $template->id) }}" method="POST">
+                                                <form action="{{ route('templates.delete', $template->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="btn btn-outline-danger" type="submit"
@@ -203,7 +204,6 @@
                             </table>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
     </div>
