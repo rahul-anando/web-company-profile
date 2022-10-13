@@ -60,19 +60,24 @@ class PageController extends Controller
         return redirect()->route('pages.index')->with('status', 'Data Pages berhasil ditambahkan!');
     }
 
-    public function show(Page $pages)
-    {
-        // return view('page.detail', compact('pages'));
-    }
-
-    public function edit(Page $pages, Section $sections)
+    public function show(Page $pages, Section $sections)
     {
         $sections = Section::all();
         // $pages = Page::all();
         $data['pages'] = $pages;
         $data['sections'] = $sections;
 
-        return view('page.detail', $data);
+        return view('page.manage', $data);
+    }
+
+    public function edit(Page $pages)
+    {
+        // $sections = Section::all();
+        // $pages = Page::all();
+        $data['pages'] = $pages;
+        // $data['sections'] = $sections;
+
+        return view('page.edit', $data);
     }
 
     public function update(Request $request, Page $pages)

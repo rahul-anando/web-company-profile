@@ -85,7 +85,7 @@
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $section->name }}</td>
                                         <td>{{ $section->slug }}</td>
-                                        <td>{{ $section->page }}</td>
+                                        <td><img src="{{ asset('uploads/' . $section->page->image) }}" style="width: 60px"></td>
 
                                         {{-- <td>{{ $section->page }}</td> --}}
                                         {{-- <td>{{ $section->template }}</td> --}}

@@ -124,20 +124,17 @@
                             <table id="table-1" class="table table-striped table-md">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Blade</th>
                                         <th>Image</th>
+                                        <th>Blade</th>
                                         <th class="text-right">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php $no = 1; @endphp
                                     @foreach ($templates as $template)
                                     <tr>
-                                        <td>{{ $no++ }}</td>
-                                        <td>{{ $template->blade }}</td>
                                         <td><img src="{{ asset('uploads/' . $template->image) }}" alt=""
-                                                style="width: 60px"></td>
+                                            style="width: 60px"></td>
+                                        <td>{{ $template->blade }}</td>
                                         <td class="text-right">
                                             <button type="button" class="btn btn-outline-success mr-2" data-toggle="modal" data-target="#modalEdit">Edit</button>
 

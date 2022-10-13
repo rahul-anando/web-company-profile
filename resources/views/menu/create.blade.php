@@ -35,10 +35,10 @@
                                 @enderror
                             </div>
                             <div class="form-group mb-3">
-                                <label>Outbound</label>
+                                <label>Is Outbound ?</label>
                                 <select class="form-control form-control-lg" name="is_outbound" id="is_outbound">
-                                  <option value="0">0</option>
-                                  <option value="1">1</option>
+                                  <option value="0">No</option>
+                                  <option value="1">Yes</option>
                                 </select>
                                 @error('is_outbound')
                                         <span class="text-danger small">
@@ -48,7 +48,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="parent">Parent</label>
-                                <input id="parent" type="number" class="form-control" name="parent" autocomplete="parent" autofocus placeholder="Input Parent">
+                                <input id="parent" type="number" class="form-control" name="parent" autocomplete="parent" autofocus>
                                 @error('parent')
                                     <span class="text-danger small" role="alert">
                                         {{ $message }}
@@ -57,7 +57,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="index">Index</label>
-                                <input id="index" type="number" class="form-control" name="index" autocomplete="index" autofocus placeholder="Input Index">
+                                <input id="index" type="number" class="form-control" name="index" autocomplete="index" autofocus>
                                 @error('index')
                                     <span class="text-danger small" role="alert">
                                         {{ $message }}

@@ -66,13 +66,13 @@ class SectionController extends Controller
 
             $json = [
                 'image_about' => $content,
-                'content_about' => $content
+                // 'content_about' => $content
             ];
 
             $object['content'] = json_encode($json, JSON_UNESCAPED_SLASHES);
         }
 
-        dd($object);
+        // dd($object);
         Section::create($object);
 
         return redirect()->route('sections.index')->with('status', 'Data Section berhasil ditambahkan!');

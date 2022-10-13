@@ -35,6 +35,8 @@
                                 </span>
                             @enderror
                         </div>
+                        <button type="submit" class="btn btn-primary col-2 mb-3">Update</button>
+
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="password">New Password</label>
                             <input id="password" type="password" class="form-control" name="password" autofocus>
@@ -45,7 +47,7 @@
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-primary col-2 mb-3">Update</button>
+                        <button type="submit" class="btn btn-primary col-5 mb-3">Ganti Password</button>
                     </div>
                 </form>
             </div>

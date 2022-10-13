@@ -100,6 +100,8 @@
                                                             </td>
                                                         @endif
                                             <td class="text-right">
+                                                <a class="btn btn-outline-warning mr-2"
+                                                    href="{{ route('pages.show', $page->id) }}">Manage</a>
                                                 <a class="btn btn-outline-success mr-2"
                                                     href="{{ route('pages.edit', $page->id) }}">Edit</a>
 
