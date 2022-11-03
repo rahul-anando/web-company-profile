@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="form-control-placeholder" for="image">Image</label>
-                                    <input id="image" type="file" class="form-control" name="image">
+                                    <input id="dropify" type="file" class="form-control" name="image">
                                     @error('image')
                                     <span class="text-danger small" role="alert">
                                         {{ $message }}

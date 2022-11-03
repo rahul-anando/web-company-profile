@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Page;
 use App\Models\Section;
+use App\Models\Template;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
@@ -60,14 +61,17 @@ class PageController extends Controller
         return redirect()->route('pages.index')->with('status', 'Data Pages berhasil ditambahkan!');
     }
 
-    public function show(Page $pages, Section $sections)
+    public function show(Page $pages, Section $sections, Template $templates)
     {
+        $current = Page::findOrFail($pages->id);
         $sections = Section::all();
+        $templates = Template::all();
         // $pages = Page::all();
         $data['pages'] = $pages;
+        $data['templates'] = $templates;
         $data['sections'] = $sections;
 
-        return view('page.manage', $data);
+        return view('page.manage', $current, $data);
     }
 
     public function edit(Page $pages)
@@ -123,6 +127,18 @@ class PageController extends Controller
         File::delete('./uploads/' . $pages->image);
         Page::destroy($pages->id);
 
-        return redirect()->back();
+        return redirect()->back()->with('status', 'Data Pages berhasil dihapus.');
+    }
+
+    public function back(Request $request, Page $pages, Section $sections, Template $templates)
+    {
+        $sections = Section::all();
+        $templates = Template::all();
+        // $pages = Page::all();
+        $data['pages'] = $pages;
+        $data['templates'] = $templates;
+        $data['sections'] = $sections;
+
+        return view('page.manage', ['page' => $request->page_id], $data);
     }
 }

@@ -34,6 +34,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/main', function () {
         return view('main');
     });
+    Route::get('/blade', function () {
+        return view('template.blade.slider');
+    });
 
     Route::prefix('users/')->name('users.')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('index');
@@ -61,6 +64,7 @@ Route::middleware('auth')->group(function () {
         Route::put('update/{pages:id}', [PageController::class, 'update'])->name('update');
         Route::get('edit/{pages:id}', [PageController::class, 'edit'])->name('edit');
         Route::get('show/{pages:id}', [PageController::class, 'show'])->name('show');
+        Route::get('show/{page:id}', [PageController::class, 'back'])->name('back');
     });
 
     Route::prefix('templates/')->name('templates.')->group(function () {
@@ -79,6 +83,7 @@ Route::middleware('auth')->group(function () {
         Route::delete('delete/{sections:id}', [SectionController::class, 'delete'])->name('delete');
         Route::put('update/{sections:id}', [SectionController::class, 'update'])->name('update');
         Route::get('edit/{sections:id}', [SectionController::class, 'edit'])->name('edit');
+        Route::get('add', [SectionController::class, 'add'])->name('add');
     });
 });
 

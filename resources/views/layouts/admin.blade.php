@@ -18,6 +18,7 @@
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
 </head>
 
@@ -38,7 +39,7 @@
           Copyright &copy; 2022 <div class="bullet"></div> Design By <a href="#">BTR</a>
         </div>
         <div class="footer-right">
-          2.3.0
+          1.1.0
         </div>
       </footer>
     </div>

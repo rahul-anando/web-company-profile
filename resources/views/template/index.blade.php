@@ -126,7 +126,7 @@
                                     <tr>
                                         <th>Image</th>
                                         <th>Blade</th>
-                                        <th class="text-right">Action</th>
+                                        <th class="">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -135,11 +135,20 @@
                                         <td><img src="{{ asset('uploads/' . $template->image) }}" alt=""
                                             style="width: 60px"></td>
                                         <td>{{ $template->blade }}</td>
-                                        <td class="text-right">
-                                            <button type="button" class="btn btn-outline-success mr-2" data-toggle="modal" data-target="#modalEdit">Edit</button>
+                                        <td class="">
+                                            {{-- <button type="button" class="btn btn-outline-success mr-2" data-toggle="modal" data-target="#modalEdit">Edit</button> --}}
+                                            <a class="btn btn-outline-success mr-2"
+                                            href="{{ route('templates.edit', $template->id) }}">Edit</a>
 
+                                            <form action="{{ route('templates.delete', $template->id) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-outline-danger" type="submit"
+                                                    onclick="return confirm('Yakin mau dihapus qaqa?')">Hapus</button>
+                                            </form>
+                                        </td>
                                         <!-- Modal -->
-                                        <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        {{-- <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -187,14 +196,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                                <form action="{{ route('templates.delete', $template->id) }}" method="POST" class="d-inline">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="btn btn-outline-danger" type="submit"
-                                                        onclick="return confirm('Yakin mau dihapus qaqa?')">Hapus</button>
-                                                </form>
-                                            </td>
+                                        </div> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>
