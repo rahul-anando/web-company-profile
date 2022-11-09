@@ -71,21 +71,39 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="excerpt">Excerpt</label>
-                        <input id="excerpt" type="text" class="form-control" name="excerpt" autocomplete="excerpt" autofocus placeholder="Input Excerpt">
-                        @error('excerpt')
+                        <input type="text" class="form-control" name="excerpt" autocomplete="excerpt" autofocus>
+                        {{-- @error('excerpt')
                             <span class="text-danger small" role="alert">
                                 {{ $message }}
                             </span>
-                        @enderror
+                        @enderror --}}
                     </div>
                     <div class="form-group mb-3">
-                        <label class="form-control-placeholder" for="link">Image</label>
-                        <input type="file" class="form-control" name="content" autocomplete="content" autofocus>
-                        @error('content')
+                        <label class="form-control-placeholder" for="image">Image</label>
+                        <input type="file" class="form-control" name="content[0][image]" autocomplete="content" autofocus>
+                        {{-- @error('content')
                             <span class="text-danger small" role="alert">
                                 {{ $message }}
                             </span>
-                        @enderror
+                        @enderror --}}
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-control-placeholder" for="image_name">Image Name</label>
+                        <input type="text" class="form-control" name="content[0][image_name]" autocomplete="content" autofocus>
+                        {{-- @error('content')
+                            <span class="text-danger small" role="alert">
+                                {{ $message }}
+                            </span>
+                        @enderror --}}
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-control-placeholder" for="image_excerpt">Image Excerpt</label>
+                        <input type="text" class="form-control" name="content[0][image_excerpt]" autocomplete="content" autofocus>
+                        {{-- @error('excerpt')
+                            <span class="text-danger small" role="alert">
+                                {{ $message }}
+                            </span>
+                        @enderror --}}
                     </div>
                     {{-- <a href class="btn btn-success col-2 mb-5">Kembali</a> --}}
                     <button type="submit" class="btn btn-primary col-2 mb-3">Submit</button>

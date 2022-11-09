@@ -45,7 +45,7 @@
                                     <span class="badge badge-warning">{{ $section->name }}</span>
 
                                     <div class="float-right">
-                                        <a href="">
+                                        <a href="{{ route('sections.edit', $section->id) }}">
                                             <i class="fa fa-edit text-primary" width="15"></i>
                                         </a>
                                         <form action="{{ route('sections.delete', $section->id) }}" onsubmit="return confirm('Yaqin mau dihapus qaqa ? ')"

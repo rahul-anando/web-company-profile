@@ -6,9 +6,9 @@
         <div class="card">
             <div class="card-header">
             @section('title')
-                Review
+                Edit Service
             @endsection
-            <h4>Review</h4>
+            <h4>Edit Service</h4>
         </div>
         @if (session()->has('status'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -34,8 +34,8 @@
                 <div class="card col">
                     @csrf
                     <div class="form-group mb-3">
-                        <label class="form-control-placeholder" for="index">Index</label>
-                        <input type="number" class="form-control" name="index" autocomplete="name" autofocus placeholder="Input Section Index">
+                        <label class="form-control-placeholder" for="name">Index</label>
+                        <input id="index" type="number" class="form-control" name="index" autocomplete="name" autofocus placeholder="Input Section Index">
                         @error('index')
                         <span class="text-danger small" role="alert">
                             {{ $message }}
@@ -44,7 +44,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="name">Name</label>
-                        <input type="text" class="form-control" name="name" autocomplete="name" autofocus placeholder="Input Name">
+                        <input id="name" type="text" class="form-control" name="name" autocomplete="name" autofocus placeholder="Input Name">
                         @error('name')
                         <span class="text-danger small" role="alert">
                             {{ $message }}
@@ -53,7 +53,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="slug">Slug</label>
-                        <input type="text" class="form-control" name="slug" autocomplete="slug" autofocus placeholder="Input Slug">
+                        <input id="slug" type="text" class="form-control" name="slug" autocomplete="slug" autofocus placeholder="Input Slug">
                         @error('slug')
                             <span class="text-danger small" role="alert">
                                 {{ $message }}
@@ -62,12 +62,21 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="title">Title</label>
-                        <input type="text" class="form-control" name="title" autocomplete="title" autofocus>
+                        <input id="title" type="text" class="form-control" name="title" autocomplete="title" autofocus placeholder="Input Title">
                         @error('title')
-                        <span class="text-danger small" role="alert">
-                            {{ $message }}
-                        </span>
+                            <span class="text-danger small" role="alert">
+                                {{ $message }}
+                            </span>
                         @enderror
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-control-placeholder" for="excerpt">Excerpt</label>
+                        <input type="text" class="form-control" name="excerpt" autocomplete="excerpt" autofocus>
+                        {{-- @error('excerpt')
+                            <span class="text-danger small" role="alert">
+                                {{ $message }}
+                            </span>
+                        @enderror --}}
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="image">Image</label>
@@ -87,29 +96,23 @@
                             </span>
                         @enderror --}}
                     </div>
-                     <div class="form-group">
-                        <label>Image Description</label>
-                        <textarea class="form-control" rows="4" cols="40" name="content[0][image_desc]"></textarea>
+                    <div class="form-group mb-3">
+                        <label class="form-control-placeholder" for="image_excerpt">Image Excerpt</label>
+                        <input type="text" class="form-control" name="content[0][image_excerpt]" autocomplete="content" autofocus>
+                        {{-- @error('excerpt')
+                            <span class="text-danger small" role="alert">
+                                {{ $message }}
+                            </span>
+                        @enderror --}}
                     </div>
                     {{-- <a href class="btn btn-success col-2 mb-5">Kembali</a> --}}
                     <button type="submit" class="btn btn-primary col-2 mb-3">Submit</button>
                 </div>
             </form>
         </div>
-
-
-
-
-
-
-
-
-
         </div>
     </div>
 </div>
-
-
 
 
 @endsection

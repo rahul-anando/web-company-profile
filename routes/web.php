@@ -83,6 +83,7 @@ Route::middleware('auth')->group(function () {
         Route::delete('delete/{sections:id}', [SectionController::class, 'delete'])->name('delete');
         Route::put('update/{sections:id}', [SectionController::class, 'update'])->name('update');
         Route::get('edit/{sections:id}', [SectionController::class, 'edit'])->name('edit');
+        // Route::get('edit', [SectionController::class, 'edit'])->name('edit');
         Route::get('add', [SectionController::class, 'add'])->name('add');
     });
 });

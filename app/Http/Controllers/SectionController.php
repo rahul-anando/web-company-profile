@@ -63,14 +63,18 @@ class SectionController extends Controller
         ];
 
         if ($request->has('content')) {
-            $content = Storage::disk('uploads')->put('sections', $request->content);
+            $content1 = Storage::disk('uploads')->put('sections', $request->content[0]['image']);
+
 
             if ($request->data_id == 1)
             {
+                $content[0]['image'] = $content1;
+                $content[0]['image_name'] = $request->content[0]['image_name'];
+
                 $json = [
                     'title_h4' => $request->title_h4,
                     'title_h1' => $request->title_h1,
-                    'content' => $request->content,
+                    'content' => $content,
                     // 'image[name]' => $request->content->getClientOriginalName()
 
                     // $image = [
@@ -81,35 +85,50 @@ class SectionController extends Controller
             }
             elseif ($request->data_id == 2)
             {
+                $content[0]['image'] = $content1;
+                $content[0]['image_name'] = $request->content[0]['image_name'];
+                $content[0]['image_excerpt'] = $request->content[0]['image_excerpt'];
+
                 $json = [
                     'title' => $request->title,
                     'excerpt' => $request->excerpt,
-                    'image' => $content,
+                    'content' => $content,
                 ];
             }
-            elseif ($request->data_id == 3)
-            {
-                $json = [
-                    'title' => $request->title,
-                    'excerpt' => $request->excerpt,
-                    'button_text' => $request->button_text,
-                    'button_link' => $request->button_link
-                ];
-            }
+            // elseif ($request->data_id == 3)
+            // {
+            //     $json = [
+            //         'title' => $request->title,
+            //         'excerpt' => $request->excerpt,
+            //         'button_text' => $request->button_text,
+            //         'button_link' => $request->button_link
+            //     ];
+            // }
             elseif ($request->data_id == 4)
             {
+                $content[0]['image'] = $content1;
+                $content[0]['image_name'] = $request->content[0]['image_name'];
+                $content[0]['image_desc'] = $request->content[0]['image_desc'];
                 $json = [
                     'title' => $request->title,
-                    'image' => $content,
+                    'content' => $content,
                 ];
             }
 
-            // array_push($image, array($json));
+            $object['content'] = json_encode($json, JSON_UNESCAPED_SLASHES);
+
+        } else {
+            $json = [
+                'title' => $request->title,
+                'excerpt' => $request->excerpt,
+                'button_text' => $request->button_text,
+                'button_link' => $request->button_link
+            ];
 
             $object['content'] = json_encode($json, JSON_UNESCAPED_SLASHES);
         }
 
-        dd($object);
+        // dd($object);
         Section::create($object);
 
         return redirect()->route('pages.back', ['page' => $request->page_id])->with('status', 'Data Section berhasil ditambahkan!');
@@ -120,62 +139,73 @@ class SectionController extends Controller
     {
     }
 
-    public function edit(Section $sections)
+    public function edit(Section $sections, Page $pages, Template $templates)
     {
+        $pages = Page::all();
+        $templates = Template::all();
         $data['sections'] = $sections;
 
-        return view('section.edit', $data);
+        return view('section.edit.slider', $data);
     }
 
     public function update(Request $request, Section $sections)
     {
-        $validator = Validator::make($request->all(),[
-            'name' => 'required',
-            'slug' => 'required',
-            'content' => 'required',
-            'index' => 'required',
-        ]);
+        // $validator = Validator::make($request->all(),[
+        //     'name' => 'required',
+        //     'slug' => 'required',
+        //     'content' => 'required',
+        //     'index' => 'required',
+        // ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
+        // if ($validator->fails()) {
+        //     return redirect()->back()
+        //         ->withErrors($validator)
+        //         ->withInput();
+        // }
 
         $current = Section::findOrFail($sections->id);
 
         $object = [
             'name' => $request->name,
             'slug' => $request->slug,
-            'content' => $request->content,
+            // 'content' => $request->content,
+            'page_id' => $request->page_id,
+            'template_id' => $request->template_id,
             'index' => $request->index,
+            'data_id' => $request->data_id,
         ];
 
-        // if ($request->has('content') == null) {
-        //     $content = json_decode($current->content, true);
-        //     $json = [
-        //         'image' => $content['image'],
-        //     ];
-        //     $object['content'] = json_encode($json, JSON_UNESCAPED_SLASHES);
-        // } else if ($request->has('content')) {
-        //     $content = Storage::disk('uploads')->put('sections', $request->content);
+        if ($request->has('content') == null) {
+            $content = json_decode($current->content, true);
+            $json = [
+                'title_h4' => $request->title_h4,
+                'title_h1' => $request->title_h1,
+                'content' => $content,            ];
+            $object['content'] = json_encode($json, JSON_UNESCAPED_SLASHES);
+        } else if ($request->has('content')) {
+            $content1 = Storage::disk('uploads')->put('sections', $request->content[0]['image']);
 
-        //     $json = [
-        //         'image' => $content,
-        //     ];
+            $content[0]['image'] = $content1;
+            $content[0]['image_name'] = $request->content[0]['image_name'];
 
-        //     $object['content'] = json_encode($json, JSON_UNESCAPED_SLASHES);
+            $json = [
+                'title_h4' => $request->title_h4,
+                'title_h1' => $request->title_h1,
+                'content' => $content,
+            ];
 
-        //     if ($current->content) {
-        //         $content = json_decode($current->content, true);
-        //         File::delete('./uploads/' . $content['image']);
-        //     }
-        // }
+            $object['content'] = json_encode($json, JSON_UNESCAPED_SLASHES);
+
+            if ($current->content) {
+                $content = json_decode($current->content, true);
+                File::delete('./uploads/' . $content['content'][0]['image']);
+            }
+        }
 
         $current->update($object);
 
-        return redirect('sections')->with('status', 'Data Section berhasil diupdate!');
-
+        return redirect()->route('pages.back', ['page' => $request->page_id])->with('status', 'Data Section berhasil diupdate!');
+        // return redirect('sections')->with('status', 'Data Section berhasil diupdate!');
     }
 
     public function delete(Section $sections)

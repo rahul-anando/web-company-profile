@@ -6,9 +6,9 @@
         <div class="card">
             <div class="card-header">
             @section('title')
-                Review
+                Edit Review
             @endsection
-            <h4>Review</h4>
+            <h4>Edit Review</h4>
         </div>
         @if (session()->has('status'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
