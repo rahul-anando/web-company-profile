@@ -25,9 +25,10 @@
                 <input type="hidden" name="template_id" value="{{ $sections->template_id }}" required>
                 <div class="card col">
                     @csrf
+                    @method('put')
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="name">Index</label>
-                        <input id="index" type="number" class="form-control" name="index" autocomplete="name" autofocus placeholder="Input Section Index" value="{{ $sections->index }}">
+                        <input id="index" type="number" class="form-control" name="index" autofocus placeholder="Input Section Index" value="{{ $sections->index }}">
                         @error('index')
                         <span class="text-danger small" role="alert">
                             {{ $message }}
@@ -36,7 +37,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="name">Name</label>
-                        <input id="name" type="text" class="form-control" name="name" autocomplete="name" autofocus placeholder="Input Name" value="{{ $sections->name }}">
+                        <input id="name" type="text" class="form-control" name="name" autofocus placeholder="Input Name" value="{{ $sections->name }}">
                         @error('name')
                         <span class="text-danger small" role="alert">
                             {{ $message }}
@@ -45,7 +46,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="slug">Slug</label>
-                        <input id="slug" type="text" class="form-control" name="slug" autocomplete="slug" autofocus placeholder="Input Slug" value="{{ $sections->slug }}">
+                        <input id="slug" type="text" class="form-control" name="slug" autofocus placeholder="Input Slug" value="{{ $sections->slug }}">
                         @error('slug')
                             <span class="text-danger small" role="alert">
                                 {{ $message }}
@@ -57,7 +58,7 @@
                     @endphp
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="title_h4">Title (h4)</label>
-                        <input id="title_h4" type="text" class="form-control" name="title_h4" autocomplete="title_h4" autofocus placeholder="Input Title (h4)" value="{{ $content['title_h4'] }}">
+                        <input id="title_h4" type="text" class="form-control" name="title_h4" autofocus placeholder="Input Title (h4)" value="{{ $content['title_h4'] }}">
                         @error('title_h4')
                             <span class="text-danger small" role="alert">
                                 {{ $message }}
@@ -66,7 +67,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="title_h1">Title (h1)</label>
-                        <input id="title_h1" type="text" class="form-control" name="title_h1" autocomplete="title_h1" autofocus placeholder="Input Title (h1)" value="{{ $content['title_h1'] }}">
+                        <input id="title_h1" type="text" class="form-control" name="title_h1" autofocus placeholder="Input Title (h1)" value="{{ $content['title_h1'] }}">
                         @error('title_h1')
                             <span class="text-danger small" role="alert">
                                 {{ $message }}
@@ -76,7 +77,7 @@
                     <div class="form-group mb-3">
                         <img src="{{ asset('uploads/' . $content['content'][0]['image']) }}" class="img-fluid mb-3 col-sm-5 d-block">
                         <label class="form-control-placeholder" for="image">Image</label>
-                        <input type="file" class="form-control" name="content[0][image]" autocomplete="content" autofocus>
+                        <input type="file" class="form-control" name="content[0][image]" autofocus>
                         {{-- @error('content')
                         <span class="text-danger small" role="alert">
                             {{ $message }}
@@ -85,7 +86,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="image_name">Image Name</label>
-                        <input type="text" class="form-control" name="content[0][image_name]" autocomplete="content" autofocus value="{{ $content['content'][0]['image_name'] }}">
+                        <input type="text" class="form-control" name="content[0][image_name]" autofocus value="{{ $content['content'][0]['image_name'] }}">
                         {{-- @error('content')
                         <span class="text-danger small" role="alert">
                             {{ $message }}
@@ -98,6 +99,7 @@
                     </div> --}}
                     {{-- <a href class="btn btn-success col-2 mb-5">Kembali</a> --}}
                     <button type="submit" class="btn btn-primary col-2 mb-3">Submit</button>
+                    <a href="{{ route('pages.back', ['page' => $sections->page_id]) }}" class="btn btn-secondary col-2 my-3">Back </a>
                 </div>
             </form>
         </div>

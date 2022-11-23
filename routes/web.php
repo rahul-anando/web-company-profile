@@ -63,7 +63,7 @@ Route::middleware('auth')->group(function () {
         Route::delete('delete/{pages:id}', [PageController::class, 'delete'])->name('delete');
         Route::put('update/{pages:id}', [PageController::class, 'update'])->name('update');
         Route::get('edit/{pages:id}', [PageController::class, 'edit'])->name('edit');
-        Route::get('show/{pages:id}', [PageController::class, 'show'])->name('show');
+        Route::get('show/{id}', [PageController::class, 'show'])->name('show');
         Route::get('show/{page:id}', [PageController::class, 'back'])->name('back');
     });
 
@@ -82,8 +82,7 @@ Route::middleware('auth')->group(function () {
         Route::post('store', [SectionController::class, 'store'])->name('store');
         Route::delete('delete/{sections:id}', [SectionController::class, 'delete'])->name('delete');
         Route::put('update/{sections:id}', [SectionController::class, 'update'])->name('update');
-        Route::get('edit/{sections:id}', [SectionController::class, 'edit'])->name('edit');
-        // Route::get('edit', [SectionController::class, 'edit'])->name('edit');
+        Route::get('edit/{id}', [SectionController::class, 'edit_section'])->name('edit');
         Route::get('add', [SectionController::class, 'add'])->name('add');
     });
 });

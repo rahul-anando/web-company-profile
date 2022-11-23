@@ -27,29 +27,29 @@
                             </div>
                         @endif
 
-                        @if ($sections->count())
-                        @foreach ($sections as $section)
+                        {{-- @if ($sections->count()) --}}
+                        @forelse ($pages->sections as $section)
                         <div class="section-list">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="d-inline-block mr-3">
+                                    {{-- <div class="d-inline-block mr-3">
                                         <a href="#">
                                             <i class="fa fa-arrow-up" class="text-secondary" width="15"></i>
                                         </a>
                                         <a href="#">
                                             <i class="fa fa-arrow-down" class="text-secondary" width="15"></i>
                                         </a>
-                                    </div>
+                                    </div> --}}
                                     {{-- Section {{ $section->index }} - --}}
                                     Section {{ $section->index }} -
                                     <span class="badge badge-warning">{{ $section->name }}</span>
 
                                     <div class="float-right">
-                                        <a href="{{ route('sections.edit', $section->id) }}">
+                                        <a href="{{ route('sections.edit', $section->id) }}" class="btn">
                                             <i class="fa fa-edit text-primary" width="15"></i>
                                         </a>
                                         <form action="{{ route('sections.delete', $section->id) }}" onsubmit="return confirm('Yaqin mau dihapus qaqa ? ')"
-                                            class="d-inline mx-2" method="POST">
+                                            class="d-inline" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn p-0">
@@ -60,10 +60,13 @@
                                 </div>
                             </div>
                         </div>
-                        @endforeach
-                        @else
+                        @empty
+                            <p class="text-center">No Section found</p>
+                        @endforelse
+
+                        {{-- @else
                             <p class="text-center">No Section found.</p>
-                        @endif
+                        @endif --}}
 
                         {{-- Modal  --}}
                         {{-- <div class="modal fade" id="modalCreate" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -181,15 +184,16 @@
                                                     </select>
                                                 </div> --}}
                                                 <div class="rad_">
-                                                    @php $no = 1; @endphp
                                                     @foreach ( $templates as $template )
                                                     <div class="opt_">
-                                                        <input type="radio" name="data_id" value="{{ $no++ }}">
+                                                        {{-- <input type="radio" name="data_id" value="{{ $loop->iteration }}"> --}}
+                                                        <input type="radio" name="template_id" value="{{ $template->id }}">
                                                         <div class="tile">
                                                             <img src="https://pelindo.sevenpion.net/common/images/section-variants/Layout%205.jpeg" alt="" class="frame_">
                                                             <label for="template">{{ $template->blade }}</label>
                                                         </div>
                                                     </div>
+                                                    {{-- <input type="hidden" name="template_id" value="{{ $template->id }}"> --}}
                                                         {{-- <div class="opt_">
                                                             <input type="radio" name="section_" id="">
                                                             <div class="tile">

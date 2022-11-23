@@ -14,7 +14,8 @@ class PageController extends Controller
 {
     public function index()
     {
-        $pages = Page::all();
+        // $pages = Page::all();
+        $pages = Page::with(relations: 'sections')->get();
         $data['pages'] = $pages;
 
         return view('page.index', $data);
@@ -61,26 +62,22 @@ class PageController extends Controller
         return redirect()->route('pages.index')->with('status', 'Data Pages berhasil ditambahkan!');
     }
 
-    public function show(Page $pages, Section $sections, Template $templates)
+    public function show($id)
     {
-        $current = Page::findOrFail($pages->id);
-        $sections = Section::all();
+        $pages = Page::where('id', $id)->with('sections')->first();
+        // dd($pages->toArray());
+        // $pages = Page::findOrFail($pages->id);
+        // $pages = Page::with('sections')->get();
         $templates = Template::all();
-        // $pages = Page::all();
         $data['pages'] = $pages;
         $data['templates'] = $templates;
-        $data['sections'] = $sections;
 
-        return view('page.manage', $current, $data);
+        return view('page.manage', $data);
     }
 
     public function edit(Page $pages)
     {
-        // $sections = Section::all();
-        // $pages = Page::all();
         $data['pages'] = $pages;
-        // $data['sections'] = $sections;
-
         return view('page.edit', $data);
     }
 

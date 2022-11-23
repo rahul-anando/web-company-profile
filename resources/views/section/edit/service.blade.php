@@ -20,22 +20,15 @@
         @endif
 
         <div class="card-body">
-            {{-- <a href="{{ route('pages.show', $page->id) }}" class="btn btn-success float-right mb-3">Kembali</a> --}}
-            <form action="{{ route('sections.store') }}" method="POST" enctype="multipart/form-data">
-                {{-- @php $no = 1; @endphp --}}
-                @foreach ($pages as $page )
-                <input type="hidden" name="page_id" value="{{ $page->id }}" required>
-                @endforeach
-                @foreach ( $templates as $template )
-                <input type="hidden" name="template_id" value="{{ $template->id }}" required>
-                @endforeach
-                {{-- <input type="hidden" name="index" value="{{ $no++ }}" required> --}}
-                <input type="hidden" name="data_id" value="{{ $data_id }}" required>
+            <form action="{{ route('sections.update', ['sections' => $sections->id]) }}" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="page_id" value="{{ $sections->page_id }}" required>
+                <input type="hidden" name="template_id" value="{{ $sections->template_id }}" required>
                 <div class="card col">
                     @csrf
+                    @method('put')
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="name">Index</label>
-                        <input id="index" type="number" class="form-control" name="index" autocomplete="name" autofocus placeholder="Input Section Index">
+                        <input id="index" type="number" class="form-control" name="index" autofocus placeholder="Input Section Index" value="{{ $sections->index }}">
                         @error('index')
                         <span class="text-danger small" role="alert">
                             {{ $message }}
@@ -44,7 +37,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="name">Name</label>
-                        <input id="name" type="text" class="form-control" name="name" autocomplete="name" autofocus placeholder="Input Name">
+                        <input id="name" type="text" class="form-control" name="name" autofocus placeholder="Input Name" value="{{ $sections->name }}">
                         @error('name')
                         <span class="text-danger small" role="alert">
                             {{ $message }}
@@ -53,16 +46,19 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="slug">Slug</label>
-                        <input id="slug" type="text" class="form-control" name="slug" autocomplete="slug" autofocus placeholder="Input Slug">
+                        <input id="slug" type="text" class="form-control" name="slug" autofocus placeholder="Input Slug" value="{{ $sections->slug }}">
                         @error('slug')
                             <span class="text-danger small" role="alert">
                                 {{ $message }}
                             </span>
                         @enderror
                     </div>
+                    @php
+                        $content = json_decode($sections->content, true);
+                    @endphp
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="title">Title</label>
-                        <input id="title" type="text" class="form-control" name="title" autocomplete="title" autofocus placeholder="Input Title">
+                        <input id="title" type="text" class="form-control" name="title" autofocus placeholder="Input Title" value="{{ $content['title'] }}">
                         @error('title')
                             <span class="text-danger small" role="alert">
                                 {{ $message }}
@@ -71,7 +67,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="excerpt">Excerpt</label>
-                        <input type="text" class="form-control" name="excerpt" autocomplete="excerpt" autofocus>
+                        <input type="text" class="form-control" name="excerpt" autofocus value="{{ $content['excerpt'] }}">
                         {{-- @error('excerpt')
                             <span class="text-danger small" role="alert">
                                 {{ $message }}
@@ -79,8 +75,9 @@
                         @enderror --}}
                     </div>
                     <div class="form-group mb-3">
+                        <img src="{{ asset('uploads/' . $content['content'][0]['image']) }}" class="img-fluid mb-3 col-sm-5 d-block">
                         <label class="form-control-placeholder" for="image">Image</label>
-                        <input type="file" class="form-control" name="content[0][image]" autocomplete="content" autofocus>
+                        <input type="file" class="form-control" name="content[0][image]" autofocus>
                         {{-- @error('content')
                             <span class="text-danger small" role="alert">
                                 {{ $message }}
@@ -89,7 +86,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="image_name">Image Name</label>
-                        <input type="text" class="form-control" name="content[0][image_name]" autocomplete="content" autofocus>
+                        <input type="text" class="form-control" name="content[0][image_name]" autofocus value="{{ $content['content'][0]['image_name'] }}" required>
                         {{-- @error('content')
                             <span class="text-danger small" role="alert">
                                 {{ $message }}
@@ -98,7 +95,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="image_excerpt">Image Excerpt</label>
-                        <input type="text" class="form-control" name="content[0][image_excerpt]" autocomplete="content" autofocus>
+                        <input type="text" class="form-control" name="content[0][image_excerpt]" autofocus value="{{ $content['content'][0]['image_excerpt'] }}" required>
                         {{-- @error('excerpt')
                             <span class="text-danger small" role="alert">
                                 {{ $message }}

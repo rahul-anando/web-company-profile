@@ -80,10 +80,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php $no = 1; @endphp
                                     @foreach ($pages as $page)
                                         <tr>
-                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td>{{ $page->title }}</td>
                                             <td>{{ $page->slug }}</td>
                                             <td>{{ $page->meta }}</td>

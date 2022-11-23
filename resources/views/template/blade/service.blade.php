@@ -26,16 +26,16 @@
                 @foreach ($pages as $page )
                 <input type="hidden" name="page_id" value="{{ $page->id }}" required>
                 @endforeach
-                @foreach ( $templates as $template )
-                <input type="hidden" name="template_id" value="{{ $template->id }}" required>
-                @endforeach
+                {{-- @foreach ( $templates as $template ) --}}
+                <input type="hidden" name="template_id" value="{{ $templates->id }}" required>
+                {{-- @endforeach --}}
                 {{-- <input type="hidden" name="index" value="{{ $no++ }}" required> --}}
-                <input type="hidden" name="data_id" value="{{ $data_id }}" required>
+                {{-- <input type="hidden" name="data_id" value="{{ $data_id }}" required> --}}
                 <div class="card col">
                     @csrf
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="name">Index</label>
-                        <input id="index" type="number" class="form-control" name="index" autocomplete="name" autofocus placeholder="Input Section Index">
+                        <input id="index" type="number" class="form-control" name="index" autofocus placeholder="Input Section Index">
                         @error('index')
                         <span class="text-danger small" role="alert">
                             {{ $message }}
@@ -44,7 +44,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="name">Name</label>
-                        <input id="name" type="text" class="form-control" name="name" autocomplete="name" autofocus placeholder="Input Name">
+                        <input id="name" type="text" class="form-control" name="name" autofocus placeholder="Input Name">
                         @error('name')
                         <span class="text-danger small" role="alert">
                             {{ $message }}
@@ -53,7 +53,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="slug">Slug</label>
-                        <input id="slug" type="text" class="form-control" name="slug" autocomplete="slug" autofocus placeholder="Input Slug">
+                        <input id="slug" type="text" class="form-control" name="slug" autofocus placeholder="Input Slug">
                         @error('slug')
                             <span class="text-danger small" role="alert">
                                 {{ $message }}
@@ -62,7 +62,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="title">Title</label>
-                        <input id="title" type="text" class="form-control" name="title" autocomplete="title" autofocus placeholder="Input Title">
+                        <input id="title" type="text" class="form-control" name="title" autofocus placeholder="Input Title">
                         @error('title')
                             <span class="text-danger small" role="alert">
                                 {{ $message }}
@@ -71,7 +71,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="excerpt">Excerpt</label>
-                        <input type="text" class="form-control" name="excerpt" autocomplete="excerpt" autofocus>
+                        <input type="text" class="form-control" name="excerpt" autofocus>
                         {{-- @error('excerpt')
                             <span class="text-danger small" role="alert">
                                 {{ $message }}
@@ -80,7 +80,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="image">Image</label>
-                        <input type="file" class="form-control" name="content[0][image]" autocomplete="content" autofocus>
+                        <input type="file" class="form-control" name="content[0][image]" autofocus>
                         {{-- @error('content')
                             <span class="text-danger small" role="alert">
                                 {{ $message }}
@@ -89,7 +89,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="image_name">Image Name</label>
-                        <input type="text" class="form-control" name="content[0][image_name]" autocomplete="content" autofocus>
+                        <input type="text" class="form-control" name="content[0][image_name]" autofocus>
                         {{-- @error('content')
                             <span class="text-danger small" role="alert">
                                 {{ $message }}
@@ -98,7 +98,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-control-placeholder" for="image_excerpt">Image Excerpt</label>
-                        <input type="text" class="form-control" name="content[0][image_excerpt]" autocomplete="content" autofocus>
+                        <input type="text" class="form-control" name="content[0][image_excerpt]" autofocus>
                         {{-- @error('excerpt')
                             <span class="text-danger small" role="alert">
                                 {{ $message }}
