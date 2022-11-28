@@ -67,18 +67,18 @@ class MenuController extends Controller
     public function update(Request $request, Menu $menus)
     {
         $validator = Validator::make($request->all(),[
-            'name' => 'required|string|max:255',
-            'link' => 'required|string|',
+            'name' => 'required',
+            'link' => 'required',
             'is_outbound' => 'required',
             'parent' => 'required',
             'index' => 'required',
         ]);
 
-        // if ($validator->fails()) {
-        //     return redirect()->back()
-        //         ->withErrors($validator)
-        //         ->withInput();
-        // }
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $current = Menu::findOrFail($menus->id);
 

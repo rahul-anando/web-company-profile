@@ -25,11 +25,11 @@ class SectionController extends Controller
 
     public function create(Section $sections, Page $pages, Template $templates)
     {
-        $pages = Page::with(relations: 'sections')->get();
-        $data['pages'] = $pages;
-        $data['sections'] = $sections;
+        // $pages = Page::with(relations: 'sections')->get();
+        // $data['pages'] = $pages;
+        // $data['sections'] = $sections;
 
-        return view('section.create', $data);
+        // return view('section.create', $data);
     }
 
     public function store(Request $request, Page $pages, Section $section, Template $templates)
@@ -54,12 +54,10 @@ class SectionController extends Controller
             'page_id' => $request->page_id,
             'template_id' => $request->template_id,
             'index' => $request->index,
-            // 'data_id' => $request->data_id,
         ];
 
         if ($request->has('content')) {
             $content1 = Storage::disk('uploads')->put('sections', $request->content[0]['image']);
-
 
             if ($request->template_id == 1)
             {
@@ -90,15 +88,6 @@ class SectionController extends Controller
                     'content' => $content,
                 ];
             }
-            // elseif ($request->data_id == 3)
-            // {
-            //     $json = [
-            //         'title' => $request->title,
-            //         'excerpt' => $request->excerpt,
-            //         'button_text' => $request->button_text,
-            //         'button_link' => $request->button_link
-            //     ];
-            // }
             elseif ($request->template_id == 4)
             {
                 $content[0]['image'] = $content1;
@@ -135,27 +124,16 @@ class SectionController extends Controller
 
     }
 
-    public function edit(Request $request, Section $sections, Page $pages, Template $templates)
+    public function edit($id)
     {
-        // $pages = Page::with('sections')->get();
-        // // dd($pages->toArray());
-        // // $pages = Page::all();
-        // // $sections = Section::all();
-        $data['pages'] = $pages;
+        $sections = Section::where('id', $id)->with('template')->first();
+
+        $blade = 'section.edit.'. $sections->template->blade;
+
         $data['sections'] = $sections;
 
-        if ($request->template_id == 1) {
-            return view('section.edit.slider', $data);
-        } else if ($request->template_id == 2) {
-            return view('section.edit.service', $data);
-        } else if ($request->template_id == 3) {
-            return view('section.edit.about', $data);
-        } else if ($request->template_id == 4){
-            return view('section.edit.review', $data);
-        }
-        else {
-            return $sections;
-        }
+        return view($blade, $data);
+        // dd($blade);
     }
 
     public function update(Request $request, Section $sections)
@@ -182,7 +160,6 @@ class SectionController extends Controller
             'page_id' => $request->page_id,
             'template_id' => $request->template_id,
             'index' => $request->index,
-            // 'data_id' => $request->data_id,
         ];
 
         if ($request->template_id == 1 ) {
@@ -223,7 +200,7 @@ class SectionController extends Controller
             }
 
         }  else if ($request->template_id == 2 ) {
-            if ($request->input('content[0]["image"]') == null) {
+            if ($request->file('content') == null) {
                 $content = json_decode($current->content, true);
 
                 $content1 = [
@@ -241,7 +218,7 @@ class SectionController extends Controller
                 ];
                 $object['content'] = json_encode($json, JSON_UNESCAPED_SLASHES);
 
-            } else {
+            } else if ($request->file('content')) {
                 $content1 = Storage::disk('uploads')->put('sections', $request->content[0]['image']);
 
                 $content[0]['image'] = $content1;
@@ -251,7 +228,7 @@ class SectionController extends Controller
                 $json = [
                     'title' => $request->title,
                     'excerpt' => $request->excerpt,
-                    'content' => $content1,
+                    'content' => $content,
                 ];
 
                 $object['content'] = json_encode($json, JSON_UNESCAPED_SLASHES);
@@ -274,7 +251,7 @@ class SectionController extends Controller
 
         } else if ($request->template_id == 4 ) {
 
-            if ($request->input('content[0]["image"]') == null) {
+            if ($request->file('content') == null) {
                 $content = json_decode($current->content, true);
 
                 $content1 = [
@@ -290,7 +267,7 @@ class SectionController extends Controller
                     'content' => $content1,
                 ];
                 $object['content'] = json_encode($json, JSON_UNESCAPED_SLASHES);
-            } else if ($request->content[0]['image']) {
+            } else if ($request->file('content')) {
                 $content1 = Storage::disk('uploads')->put('sections', $request->content[0]['image']);
 
                 $content[0]['image'] = $content1;
@@ -299,7 +276,7 @@ class SectionController extends Controller
 
                 $json = [
                     'title' => $request->title,
-                    'content' => $content1,
+                    'content' => $content,
                 ];
 
                 $object['content'] = json_encode($json, JSON_UNESCAPED_SLASHES);
@@ -320,11 +297,19 @@ class SectionController extends Controller
 
     public function delete(Section $sections)
     {
-        Section::destroy($sections->id);
+        $current = json_decode($sections->content, true);
+
+        if (isset($current['content'])) {
+            File::delete('./uploads/' . $current['content'][0]['image']);
+            Section::destroy($sections->id);
+        } else {
+            Section::destroy($sections->id);
+        }
+
         return redirect()->back();
     }
 
-    public function add(Request $request, Page $pages, Template $templates, Section $sections)
+    public function add_section(Request $request, Page $pages, Template $templates, Section $sections)
     {
         $sections = Section::all();
         $pages = Page::all();
@@ -336,19 +321,7 @@ class SectionController extends Controller
         $data['pages'] = $pages;
         $data['templates'] = $templates;
 
-        return view($blade, $data);
-        // dd($templates);
+        return view($blade, ['page_id' => $request->page_id], $data);
     }
 
-    public function edit_section ($id)
-    {
-        $sections = Section::where('id', $id)->with('template')->first();
-
-        $blade = 'section.edit.'. $sections->template->blade;
-
-        $data['sections'] = $sections;
-
-        return view($blade, $data);
-        // dd($blade);
-    }
 }

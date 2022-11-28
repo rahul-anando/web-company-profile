@@ -78,12 +78,12 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('sections/')->name('sections.')->group(function () {
         Route::get('/', [SectionController::class, 'index'])->name('index');
-        Route::get('create', [SectionController::class, 'create'])->name('create');
+        // Route::get('create', [SectionController::class, 'create'])->name('create');
         Route::post('store', [SectionController::class, 'store'])->name('store');
-        Route::delete('delete/{sections:id}', [SectionController::class, 'delete'])->name('delete');
+        Route::post('delete/{sections:id}', [SectionController::class, 'delete'])->name('delete');
         Route::put('update/{sections:id}', [SectionController::class, 'update'])->name('update');
-        Route::get('edit/{id}', [SectionController::class, 'edit_section'])->name('edit');
-        Route::get('add', [SectionController::class, 'add'])->name('add');
+        Route::get('edit/{id}', [SectionController::class, 'edit'])->name('edit');
+        Route::get('add', [SectionController::class, 'add_section'])->name('add');
     });
 });
 

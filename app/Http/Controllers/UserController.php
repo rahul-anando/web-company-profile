@@ -70,15 +70,15 @@ class UserController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'string|min:8|',
+            // 'email' => 'required|string|email|max:255|unique:users',
+            // 'password' => 'string|min:8|',
         ]);
 
-        // if ($validator->fails()) {
-        //     return redirect()->back()
-        //         ->withErrors($validator)
-        //         ->withInput();
-        // }
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $current = User::findOrFail($users->id);
 
@@ -99,6 +99,6 @@ class UserController extends Controller
     public function delete(User $users)
     {
         User::destroy($users->id);
-        return redirect()->back();
+        return redirect()->back()->with('status', 'Data user telah dihapus.');
     }
 }

@@ -20,7 +20,7 @@
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="name">Name</label>
                                 <input id="name" type="text" class="form-control" name="name"
-                                    autocomplete="name" autofocus placeholder="Input name" value="{{ $sections->name }}">
+                                    autocomplete="name" placeholder="Input name" value="{{ $sections->name }}">
                                 @error('name')
                                     <span class="text-danger small" role="alert">
                                         {{ $message }}
@@ -30,7 +30,7 @@
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="slug">Slug</label>
                                 <input id="slug" type="text" class="form-control" name="slug"
-                                    autocomplete="slug" autofocus placeholder="Input Slug" value="{{ $sections->slug }}">
+                                    autocomplete="slug" placeholder="Input Slug" value="{{ $sections->slug }}">
                                 @error('slug')
                                     <span class="text-danger small" role="alert">
                                         {{ $message }}
@@ -49,7 +49,7 @@
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="index">Index</label>
                                 <input id="index" type="number" class="form-control" name="index"
-                                    autocomplete="index" autofocus placeholder="Input Index" value="{{ $sections->index }}">
+                                    autocomplete="index" placeholder="Input Index" value="{{ $sections->index }}">
                                 @error('index')
                                     <span class="text-danger small" role="alert">
                                         {{ $message }}

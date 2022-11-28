@@ -126,7 +126,7 @@
                                     <tr>
                                         <th>Image</th>
                                         <th>Blade</th>
-                                        <th class="">Action</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>

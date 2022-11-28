@@ -4,8 +4,7 @@
             @csrf
             <div class="form-group mx-3">
                 <label class="form-control-placeholder" for="blade">Blade</label>
-                <input id="blade" type="text" class="form-control" name="blade" autocomplete="blade"
-                    placeholder="Input Blade">
+                <input id="blade" type="text" class="form-control" name="blade" autocomplete="blade" placeholder="Input Blade">
                 @error('blade')
                     <span class="text-danger small" role="alert">
                         {{ $message }}

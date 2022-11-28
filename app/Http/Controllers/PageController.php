@@ -32,7 +32,7 @@ class PageController extends Controller
             'title' => 'required',
             'slug' => 'required',
             'meta' => 'required',
-            'image' => 'image|file|max:1024',
+            'image' => 'required|image|file|max:1024',
             'status' => 'required',
         ]);
 
@@ -66,8 +66,6 @@ class PageController extends Controller
     {
         $pages = Page::where('id', $id)->with('sections')->first();
         // dd($pages->toArray());
-        // $pages = Page::findOrFail($pages->id);
-        // $pages = Page::with('sections')->get();
         $templates = Template::all();
         $data['pages'] = $pages;
         $data['templates'] = $templates;
@@ -91,11 +89,11 @@ class PageController extends Controller
             'status' => 'required',
         ]);
 
-        // if ($validator->fails()) {
-        //     return redirect()->back()
-        //         ->withErrors($validator)
-        //         ->withInput();
-        // }
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $current = Page::findOrFail($pages->id);
 
@@ -121,20 +119,28 @@ class PageController extends Controller
 
     public function delete(Page $pages)
     {
+        $sections = Section::where('page_id', $pages->id)->get();
+
+        foreach ($sections as $key => $value) {
+            $current = json_decode($value->content, true);
+
+            if (isset($current['content'])) {
+                File::delete('./uploads/' . $current['content'][0]['image']);
+                Section::destroy($value->id);
+            } else {
+                Section::destroy($value->id);
+            }
+        }
+
         File::delete('./uploads/' . $pages->image);
         Page::destroy($pages->id);
 
         return redirect()->back()->with('status', 'Data Pages berhasil dihapus.');
     }
 
-    public function back(Request $request, Page $pages, Section $sections, Template $templates)
+    public function back(Request $request, Page $pages)
     {
-        $sections = Section::all();
-        $templates = Template::all();
-        // $pages = Page::all();
         $data['pages'] = $pages;
-        $data['templates'] = $templates;
-        $data['sections'] = $sections;
 
         return view('page.manage', ['page' => $request->page_id], $data);
     }

@@ -10,19 +10,19 @@ class TemplateSeeder extends Seeder
     public function run()
     {
         Template::create([
-            'blade' => 'Slider',
+            'blade' => 'slider',
             'image' => ''
         ]);
         Template::create([
-            'blade' => 'Service',
+            'blade' => 'service',
             'image' => ''
         ]);
         Template::create([
-            'blade' => 'About',
+            'blade' => 'about',
             'image' => ''
         ]);
         Template::create([
-            'blade' => 'Review',
+            'blade' => 'review',
             'image' => ''
         ]);
     }

@@ -11,7 +11,7 @@
           <li class="nav-item dropdown">
             <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
             <ul class="dropdown-menu">
-              <li><a class="nav-link" href="#">General Dashboard</a></li>
+              <li><a class="nav-link" href="{{ route('home') }}">General Dashboard</a></li>
             </ul>
           </li>
           <li class="menu-header">Starter</li>
@@ -24,7 +24,7 @@
               <li><a class="nav-link" href="{{ route('templates.index') }}"><i class="fas fa-table"></i>Templates </a></li>
             </ul>
           </li>
-          <li class="active"><a class="nav-link" href="{{ route('menus.index') }}"><i class="fas fa-list"></i> <span>Menus</span></a></li>
-          <li><a class="nav-link" href="{{ route('home') }}"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
+          <li><a class="nav-link" href="{{ route('menus.index') }}"><i class="fas fa-list"></i> <span>Menus</span></a></li>
+          {{-- <li><a class="nav-link" href="{{ route('home') }}"><i class="far fa-square"></i> <span>Blank Page</span></a></li> --}}
     </aside>
   </div>

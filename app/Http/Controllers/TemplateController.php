@@ -87,7 +87,7 @@ class TemplateController extends Controller
             'blade' => $request->blade,
         ];
 
-        if($request->has('image')) {
+        if ($request->has('image')) {
             $image = Storage::disk('uploads')->put('templates', $request->image);
             $object['image'] = $image;
             if ($current->image) {

@@ -1,9 +1,8 @@
 @extends('layouts.admin')
 @section('content')
 
-    <section class="section">
         <div class="row">
-            <div class="col-12">
+            <div class="col-sm-6 offset-sm-3">
                 <div class="card">
                     <div class="card-header">
                     @section('title')
@@ -12,17 +11,13 @@
                     <h4>Edit Pages</h4>
                 </div>
                 <div class="card-body">
-                    <a href="{{ route('pages.index') }}" class="btn btn-success float-right mb-3">Kembali</a>
-                    <form action="{{ route('pages.update', ['pages' => $pages->id]) }}" method="POST"
-                        enctype="multipart/form-data">
-                        <div class="card col-6">
+                    <form action="{{ route('pages.update', ['pages' => $pages->id]) }}" method="POST" enctype="multipart/form-data">
+                        <div class="card col">
                             @csrf
                             @method('put')
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="title">Title</label>
-                                <input id="title" type="text" class="form-control" name="title" required
-                                    autocomplete="title" autofocus placeholder="Input Title"
-                                    value="{{ $pages->title }}">
+                                <input id="title" type="text" class="form-control" name="title" autocomplete="title" placeholder="Input Title" value="{{ $pages->title }}">
                                 @error('title')
                                     <span class="invalid-feedback" role="alert">
                                         {{ $message }}
@@ -31,8 +26,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="slug">Slug</label>
-                                <input id="slug" type="text" class="form-control" name="slug" required
-                                    autocomplete="slug" autofocus placeholder="Input Slug" value="{{ $pages->slug }}">
+                                <input id="slug" type="text" class="form-control" name="slug" autocomplete="slug" placeholder="Input Slug" value="{{ $pages->slug }}">
                                 @error('slug')
                                     <span class="invalid-feedback" role="alert">
                                         {{ $message }}
@@ -41,8 +35,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="meta">Meta</label>
-                                <input id="meta" type="text" class="form-control" name="meta" required
-                                    autocomplete="meta" autofocus placeholder="Input Meta" value="{{ $pages->meta }}">
+                                <input id="meta" type="text" class="form-control" name="meta" autocomplete="meta" placeholder="Input Meta" value="{{ $pages->meta }}">
                                 @error('meta')
                                     <span class="invalid-feedback" role="alert">
                                         {{ $message }}
@@ -74,13 +67,15 @@
                                 @enderror
                             </div>
 
-                            <button type="submit" class="btn btn-primary col-2 mb-3">Update</button>
+                            <div class="d-inline">
+                                <a href="{{ route('pages.index') }}" class="btn btn-secondary col-2 mb-3">Kembali</a>
+                                <button type="submit" class="btn btn-primary col-2 mb-3 ml-2">Update</button>
+                            </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</section>
 
 @endsection

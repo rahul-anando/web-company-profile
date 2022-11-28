@@ -19,7 +19,7 @@
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="name">Name</label>
                                 <input id="name" type="text" class="form-control" name="name"
-                                    autocomplete="name" autofocus placeholder="Input name" value={{ old('name') }}>
+                                    autocomplete="name" placeholder="Input name" value={{ old('name') }}>
                                 @error('name')
                                     <span class="text-danger small" role="alert">
                                         {{ $message }}
@@ -29,7 +29,7 @@
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="slug">Slug</label>
                                 <input id="slug" type="text" class="form-control" name="slug"
-                                    autocomplete="slug" autofocus placeholder="Input Slug" value={{ old('slug') }}>
+                                    autocomplete="slug" placeholder="Input Slug" value={{ old('slug') }}>
                                 @error('slug')
                                     <span class="text-danger small" role="alert">
                                         {{ $message }}
@@ -45,26 +45,6 @@
                                     </span>
                                 @enderror
                             </div>
-                            {{-- <div class="form-group mb-3">
-                                <label>Page</label>
-                                <select class="form-control form-control-lg" name="page_id">
-                                @foreach ($pages as $page)
-                                    @if(old('pages_id') == $page->id)
-                                        <option value="{{ $page->title }}" selected>{{ $page->title }}</option>
-                                    @else
-                                        <option value="{{ $page->title }}">{{ $page->title }}</option>
-                                    @endif
-                                @endforeach
-                                </select>
-                            </div> --}}
-                            {{-- <div class="form-group mb-3">
-                                <label>Page</label>
-                                <select class="form-control form-control-lg" name="page_id">
-                                @foreach ($pages as $page)
-                                    <option value="{{ $page->title }}" selected>{{ $page->title }}</option>
-                                @endforeach
-                                </select>
-                            </div> --}}
                             <div class="form-group mb-3">
                                 <label>Template</label>
                                 <select class="form-control form-control-lg" name="template_id">
@@ -76,7 +56,7 @@
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="index">Index</label>
                                 <input id="index" type="number" class="form-control" name="index"
-                                    autocomplete="index" autofocus placeholder="Input Index" value={{ old('index') }}>
+                                    autocomplete="index" placeholder="Input Index" value={{ old('index') }}>
                                 @error('index')
                                     <span class="text-danger small" role="alert">
                                         {{ $message }}
