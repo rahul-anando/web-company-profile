@@ -18,7 +18,7 @@
                         @csrf
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="index">Index</label>
-                            <input type="number" class="form-control" name="index" placeholder="Input Section Index">
+                            <input type="number" class="form-control" name="index" placeholder="Input Section Index" value="{{ old('index') }}">
                             @error('index')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
@@ -27,7 +27,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="name">Name</label>
-                            <input type="text" class="form-control" name="name" placeholder="Input Name">
+                            <input type="text" class="form-control" name="name" placeholder="Input Section Name" value="{{ old('name') }}">
                             @error('name')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
@@ -36,7 +36,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="slug">Slug</label>
-                            <input type="text" class="form-control" name="slug" placeholder="Input Slug">
+                            <input type="text" class="form-control" name="slug" placeholder="Input Slug" value="{{ old('slug') }}">
                             @error('slug')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
@@ -45,7 +45,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="title">Title</label>
-                            <input type="text" class="form-control" name="title">
+                            <input type="text" class="form-control" name="title" placeholder="Input Title" value="{{ old('title') }}">
                             @error('title')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
@@ -55,24 +55,29 @@
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="image">Image</label>
                             <input type="file" class="form-control" name="content[0][image]">
-                            {{-- @error('content')
+                            @error('content[0][image]')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
                                 </span>
-                            @enderror --}}
+                            @enderror
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="image_name">Image Name</label>
-                            <input type="text" class="form-control" name="content[0][image_name]">
-                            {{-- @error('content')
+                            <input type="text" class="form-control" name="content[0][image_name]" placeholder="Input Image Name">
+                            @error('content[0][image_name]')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
                                 </span>
-                            @enderror --}}
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Image Description</label>
-                            <textarea class="form-control" rows="4" cols="40" name="content[0][image_desc]"></textarea>
+                            <textarea class="form-control" rows="4" cols="40" placeholder="Input Image Description ..." name="content[0][image_desc]"></textarea>
+                            @error('content[0][image_desc]')
+                                <span class="text-danger small" role="alert">
+                                    {{ $message }}
+                                </span>
+                            @enderror
                         </div>
 
                         <div class="d-line">

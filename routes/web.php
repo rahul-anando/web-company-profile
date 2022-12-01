@@ -21,9 +21,9 @@ use App\Http\Controllers\TemplateController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
@@ -31,6 +31,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware('auth')->group(function () {
 
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
     Route::get('/main', function () {
         return view('main');
     });
@@ -80,13 +81,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [SectionController::class, 'index'])->name('index');
         // Route::get('create', [SectionController::class, 'create'])->name('create');
         Route::post('store', [SectionController::class, 'store'])->name('store');
-        Route::post('delete/{sections:id}', [SectionController::class, 'delete'])->name('delete');
+        Route::delete('delete/{sections:id}', [SectionController::class, 'delete'])->name('delete');
         Route::put('update/{sections:id}', [SectionController::class, 'update'])->name('update');
         Route::get('edit/{id}', [SectionController::class, 'edit'])->name('edit');
         Route::get('add', [SectionController::class, 'add_section'])->name('add');
     });
 });
-
-// Route::get('/coba', function () {
-//     return view('edit');
-// });

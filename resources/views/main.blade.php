@@ -1,23 +1,27 @@
 @extends('layouts.admin')
+@section('title')
+    General Dashboard
+@endsection
 @section('content')
 
-<section class="section">
-    <div class="section-header">
-      <h1>General Dashboard</h1>
-    </div>
-       <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+    <section class="section">
+        <div class="section-header">
+            <h1>General Dashboard</h1>
+        </div>
+        <div class="card-body">
+            @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
                 </div>
+            @endif
 
-    <div class="section-body">
-    </div>
-  </section>
+            {{ __('You are logged in!') }}
+        </div>
+
+        <div class="section-body">
+        </div>
+    </section>
+
 @endsection
 
 {{-- @section('content')

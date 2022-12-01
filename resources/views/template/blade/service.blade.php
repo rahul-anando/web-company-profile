@@ -18,7 +18,7 @@
                         @csrf
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="name">Index</label>
-                            <input id="index" type="number" class="form-control" name="index" placeholder="Input Section Index">
+                            <input id="index" type="number" class="form-control" name="index" placeholder="Input Section Index" value="{{ old('index') }}">
                             @error('index')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
@@ -27,7 +27,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="name">Name</label>
-                            <input id="name" type="text" class="form-control" name="name" placeholder="Input Name">
+                            <input id="name" type="text" class="form-control" name="name" placeholder="Input Section Name" value="{{ old('name') }}">
                             @error('name')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
@@ -36,7 +36,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="slug">Slug</label>
-                            <input id="slug" type="text" class="form-control" name="slug" placeholder="Input Slug">
+                            <input id="slug" type="text" class="form-control" name="slug" placeholder="Input Slug" value="{{ old('slug') }}">
                             @error('slug')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
@@ -45,7 +45,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="title">Title</label>
-                            <input id="title" type="text" class="form-control" name="title" placeholder="Input Title">
+                            <input id="title" type="text" class="form-control" name="title" placeholder="Input Title" value="{{ old('title') }}">
                             @error('title')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
@@ -54,39 +54,39 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="excerpt">Excerpt</label>
-                            <input type="text" class="form-control" name="excerpt">
-                            {{-- @error('excerpt')
-                            <span class="text-danger small" role="alert">
-                                {{ $message }}
-                            </span>
-                        @enderror --}}
+                            <input type="text" class="form-control" name="excerpt" placeholder="Input Excerpt" value="{{ old('excerpt') }}">
+                            @error('excerpt')
+                                <span class="text-danger small" role="alert">
+                                    {{ $message }}
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="image">Image</label>
                             <input type="file" class="form-control" name="content[0][image]">
-                            {{-- @error('content')
-                            <span class="text-danger small" role="alert">
-                                {{ $message }}
-                            </span>
-                        @enderror --}}
+                            @error('content[0][image]')
+                                <span class="text-danger small" role="alert">
+                                    {{ $message }}
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="image_name">Image Name</label>
-                            <input type="text" class="form-control" name="content[0][image_name]">
-                            {{-- @error('content')
-                            <span class="text-danger small" role="alert">
-                                {{ $message }}
-                            </span>
-                        @enderror --}}
+                            <input type="text" class="form-control" name="content[0][image_name]" placeholder="Input Image Name">
+                            @error('content[0][image_name]')
+                                <span class="text-danger small" role="alert">
+                                    {{ $message }}
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="image_excerpt">Image Excerpt</label>
-                            <input type="text" class="form-control" name="content[0][image_excerpt]">
-                            {{-- @error('excerpt')
-                            <span class="text-danger small" role="alert">
-                                {{ $message }}
-                            </span>
-                        @enderror --}}
+                            <input type="text" class="form-control" name="content[0][image_excerpt]" placeholder="Input Image Excerpt">
+                            @error('content[0][image_excerpt]')
+                                <span class="text-danger small" role="alert">
+                                    {{ $message }}
+                                </span>
+                            @enderror
                         </div>
 
                         <div class="d-line">

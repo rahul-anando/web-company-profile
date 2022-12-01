@@ -28,7 +28,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="name">Name</label>
-                            <input type="text" class="form-control" name="name" placeholder="Input Name" value="{{ $sections->name }}">
+                            <input type="text" class="form-control" name="name" placeholder="Input Section Name" value="{{ $sections->name }}">
                             @error('name')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
@@ -49,7 +49,7 @@
                         @endphp
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="title">Title</label>
-                            <input type="text" class="form-control" name="title" value="{{ $content['title'] }}">
+                            <input type="text" class="form-control" name="title" placeholder="Input Title" value="{{ $content['title'] }}">
                             @error('title')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
@@ -68,7 +68,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="image_name">Image Name</label>
-                            <input type="text" class="form-control" name="content[0][image_name]" value="{{ $content['content'][0]['image_name'] }}">
+                            <input type="text" class="form-control" name="content[0][image_name]" placeholder="Input Image Name" value="{{ $content['content'][0]['image_name'] }}">
                             {{-- @error('content')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
@@ -77,7 +77,7 @@
                         </div>
                         <div class="form-group">
                             <label>Image Description</label>
-                            <textarea class="form-control" rows="4" cols="40" name="content[0][image_desc]"> {{ $content['content'][0]['image_desc'] }}</textarea>
+                            <textarea class="form-control" rows="4" cols="40" placeholder="Input Input Image Description ..." name="content[0][image_desc]"> {{ $content['content'][0]['image_desc'] }}</textarea>
                         </div>
 
                         <div class="d-line">

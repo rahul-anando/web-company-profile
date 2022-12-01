@@ -28,7 +28,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="name">Name</label>
-                            <input id="name" type="text" class="form-control" name="name" placeholder="Input Name" value="{{ $sections->name }}">
+                            <input id="name" type="text" class="form-control" name="name" placeholder="Input Section Name" value="{{ $sections->name }}">
                             @error('name')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
@@ -70,21 +70,20 @@
                                 class="img-fluid mb-3 col-sm-5 d-block">
                             <label class="form-control-placeholder" for="image">Image</label>
                             <input type="file" class="form-control" name="content[0][image]">
-                            {{-- @error('content')
+                            @error('content[0][image]')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
                                 </span>
-                            @enderror --}}
+                            @enderror
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="image_name">Image Name</label>
-                            <input type="text" class="form-control" name="content[0][image_name]"
-                                value="{{ $content['content'][0]['image_name'] }}">
-                            {{-- @error('content')
+                            <input type="text" class="form-control" name="content[0][image_name]" placeholder="Input Image Name" value="{{ $content['content'][0]['image_name'] }}">
+                            @error('content[0][image_name]')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
                                 </span>
-                            @enderror --}}
+                            @enderror
                         </div>
                         {{-- <div class="form-group">
                         <label>Description</label>

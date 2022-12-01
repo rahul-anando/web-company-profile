@@ -156,6 +156,15 @@ return [
             'min' => 'Kata sandi minimal 8 karakter.',
             'confirmed' => 'Konfirmasi kata sandi tidak cocok.'
         ],
+        'content[0][image]' => [
+            'required' => 'Image is required !',
+        ],
+        'content[0][image_name]' => [
+            'required' => 'Image name is required !',
+        ],
+        'content[0][image_excerpt]' => [
+            'required' => 'Image excerpt is required !',
+        ],
     ],
 
     /*

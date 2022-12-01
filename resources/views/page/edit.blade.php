@@ -17,7 +17,7 @@
                             @method('put')
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="title">Title</label>
-                                <input id="title" type="text" class="form-control" name="title" autocomplete="title" placeholder="Input Title" value="{{ $pages->title }}">
+                                <input type="text" class="form-control" name="title" autocomplete="title" placeholder="Input Title" value="{{ $pages->title }}">
                                 @error('title')
                                     <span class="invalid-feedback" role="alert">
                                         {{ $message }}
@@ -26,7 +26,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="slug">Slug</label>
-                                <input id="slug" type="text" class="form-control" name="slug" autocomplete="slug" placeholder="Input Slug" value="{{ $pages->slug }}">
+                                <input type="text" class="form-control" name="slug" autocomplete="slug" placeholder="Input Slug" value="{{ $pages->slug }}">
                                 @error('slug')
                                     <span class="invalid-feedback" role="alert">
                                         {{ $message }}
@@ -35,7 +35,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-control-placeholder" for="meta">Meta</label>
-                                <input id="meta" type="text" class="form-control" name="meta" autocomplete="meta" placeholder="Input Meta" value="{{ $pages->meta }}">
+                                <input type="text" class="form-control" name="meta" autocomplete="meta" placeholder="Input Meta" value="{{ $pages->meta }}">
                                 @error('meta')
                                     <span class="invalid-feedback" role="alert">
                                         {{ $message }}
@@ -47,7 +47,7 @@
                                 @if ($pages->image)
                                     <img src="{{ asset('uploads/' . $pages->image) }}" class="img-fluid mb-3 col-sm-5 d-block">
                                 @endif
-                                <input id="image" type="file" class="form-control" name="image">
+                                <input type="file" class="form-control" name="image">
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">
                                         {{ $message }}
@@ -56,7 +56,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label>Status</label>
-                                <select class="form-control form-control-lg" name="status" id="status">
+                                <select class="form-control form-control-lg" name="status">
                                     <option value="pending" {{ $pages->status == 'pending' ? 'selected' : '' }}>Pending</option>
                                     <option value="publish" {{ $pages->status == 'publish' ? 'selected' : '' }}>Publish</option>
                                 </select>

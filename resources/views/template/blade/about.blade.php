@@ -18,7 +18,7 @@
                         @csrf
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="name">Index</label>
-                            <input type="number" class="form-control" name="index" placeholder="Input Section Index">
+                            <input type="number" class="form-control" name="index" placeholder="Input Section Index" value="{{ old('index') }}">
                             @error('index')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
@@ -27,7 +27,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="name">Name</label>
-                            <input type="text" class="form-control" name="name" placeholder="Input Name">
+                            <input type="text" class="form-control" name="name" placeholder="Input Section Name" value="{{ old('name') }}">
                             @error('name')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
@@ -36,7 +36,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="slug">Slug</label>
-                            <input type="text" class="form-control" name="slug" placeholder="Input Slug">
+                            <input type="text" class="form-control" name="slug" placeholder="Input Slug" value="{{ old('slug') }}">
                             @error('slug')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
@@ -45,7 +45,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="title">Title</label>
-                            <input type="text" class="form-control" name="title">
+                            <input type="text" class="form-control" name="title" placeholder="Input Title" value="{{ old('title') }}">
                             @error('title')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
@@ -54,30 +54,30 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="excerpt">Excerpt</label>
-                            <input type="text" class="form-control" name="excerpt">
-                            {{-- @error('excerpt')
+                            <input type="text" class="form-control" name="excerpt"  placeholder="Input Excerpt" value="{{ old('excerpt') }}">
+                            @error('excerpt')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
                                 </span>
-                            @enderror --}}
+                            @enderror
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="button_text">Button Text</label>
-                            <input type="text" class="form-control" name="button_text">
-                            {{-- @error('button_text')
+                            <input type="text" class="form-control" name="button_text" placeholder="Input Button Text" value="{{ old('button_text') }}">
+                            @error('button_text')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
                                 </span>
-                            @enderror --}}
+                            @enderror
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="button_link">Button Link</label>
-                            <input type="text" class="form-control" name="button_link">
-                            {{-- @error('button_link')
+                            <input type="text" class="form-control" name="button_link"  placeholder="Input Button Link" value="{{ old('button_link') }}">
+                            @error('button_link')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
                                 </span>
-                            @enderror --}}
+                            @enderror
                         </div>
 
                         <div class="d-line">

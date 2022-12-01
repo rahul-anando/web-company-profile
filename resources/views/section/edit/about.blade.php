@@ -28,7 +28,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="name">Name</label>
-                            <input type="text" class="form-control" name="name" placeholder="Input Name" value="{{ $sections->name }}">
+                            <input type="text" class="form-control" name="name" placeholder="Input Section Name" value="{{ $sections->name }}">
                             @error('name')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
@@ -49,7 +49,7 @@
                         @endphp
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="title">Title</label>
-                            <input type="text" class="form-control" name="title" value="{{ $content['title'] }}" required>
+                            <input type="text" class="form-control" name="title"  placeholder="Input Title" value="{{ $content['title'] }}" required>
                             @error('title')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
@@ -58,7 +58,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="excerpt">Excerpt</label>
-                            <input type="text" class="form-control" name="excerpt" value="{{ $content['excerpt'] }}" required>
+                            <input type="text" class="form-control" name="excerpt"  placeholder="Input Excerpt" value="{{ $content['excerpt'] }}" required>
                             @error('excerpt')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
@@ -67,21 +67,21 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="button_text">Button Text</label>
-                            <input type="text" class="form-control" name="button_text" value="{{ $content['button_text'] }}" required>
-                            {{-- @error('button_text')
+                            <input type="text" class="form-control" name="button_text"  placeholder="Input Button Text" value="{{ $content['button_text'] }}" required>
+                            @error('button_text')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
                                 </span>
-                            @enderror --}}
+                            @enderror
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="button_link">Button Link</label>
-                            <input type="text" class="form-control" name="button_link" value="{{ $content['button_link'] }}" required>
-                            {{-- @error('button_link')
+                            <input type="text" class="form-control" name="button_link"  placeholder="Input Button Link" value="{{ $content['button_link'] }}" required>
+                            @error('button_link')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
                                 </span>
-                            @enderror --}}
+                            @enderror
                         </div>
 
                         <div class="d-line">

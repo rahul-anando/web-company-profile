@@ -34,18 +34,25 @@ class SectionController extends Controller
 
     public function store(Request $request, Page $pages, Section $section, Template $templates)
     {
-        // $validator = Validator::make($request->all(),[
-        //     'name' => 'required',
-        //     'slug' => 'required',
-        //     'content' => 'required',
-        //     'index' => 'required',
-        // ]);
+        $validator = Validator::make($request->all(),[
+            'index' => 'required',
+            'name' => 'required',
+            'slug' => 'required',
+            // 'content' => 'required',
+            // 'title' => 'required',
+            // 'title_h4' => 'required',
+            // 'title_h1' => 'required',
+            // 'content[0][image]' => 'required|image|file|max:1024',
+            // 'content[0][image_name]' => 'required',
+            // 'content[0][image_excerpt]' => 'required',
+            // 'excerpt' => 'required'
+        ]);
 
-        // if ($validator->fails()) {
-        //     return redirect()->back()
-        //         ->withErrors($validator)
-        //         ->withInput();
-        // }
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $object = [
             'name' => $request->name,
@@ -70,10 +77,6 @@ class SectionController extends Controller
                     'content' => $content,
                     // 'image[name]' => $request->content->getClientOriginalName()
 
-                    // $image = [
-                    //     'content[image]' => $content,
-                        // 'content[image_name]' => $request->content
-                    // ]
                 ];
             }
             elseif ($request->template_id == 2)
@@ -138,18 +141,18 @@ class SectionController extends Controller
 
     public function update(Request $request, Section $sections)
     {
-        // $validator = Validator::make($request->all(),[
-        //     'name' => 'required',
-        //     'slug' => 'required',
-        //     'content' => 'required',
-        //     'index' => 'required',
-        // ]);
+        $validator = Validator::make($request->all(),[
+            'index' => 'required',
+            'name' => 'required',
+            'slug' => 'required',
+            // 'content' => 'required',
+        ]);
 
-        // if ($validator->fails()) {
-        //     return redirect()->back()
-        //         ->withErrors($validator)
-        //         ->withInput();
-        // }
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $current = Section::findOrFail($sections->id);
 
@@ -176,7 +179,7 @@ class SectionController extends Controller
                 $json = [
                     'title_h4' => $request->title_h4,
                     'title_h1' => $request->title_h1,
-                    'content' => $content1,
+                    'content'  => $content1,
                 ];
                 $object['content'] = json_encode($json, JSON_UNESCAPED_SLASHES);
             } else if ($request->file('content')) {
@@ -188,7 +191,7 @@ class SectionController extends Controller
                 $json = [
                     'title_h4' => $request->title_h4,
                     'title_h1' => $request->title_h1,
-                    'content' => $content,
+                    'content'  => $content,
                 ];
 
                 $object['content'] = json_encode($json, JSON_UNESCAPED_SLASHES);
@@ -309,16 +312,16 @@ class SectionController extends Controller
         return redirect()->back();
     }
 
-    public function add_section(Request $request, Page $pages, Template $templates, Section $sections)
+    public function add_section(Request $request, Template $templates)
     {
-        $sections = Section::all();
-        $pages = Page::all();
+        // $sections = Section::all();
+        // $pages = Page::all();
         $templates = Template::where('id', $request->template_id)->first();
 
         $blade = 'template.blade.'. $templates->blade;
 
-        $data['sections'] = $sections;
-        $data['pages'] = $pages;
+        // $data['sections'] = $sections;
+        // $data['pages'] = $pages;
         $data['templates'] = $templates;
 
         return view($blade, ['page_id' => $request->page_id], $data);

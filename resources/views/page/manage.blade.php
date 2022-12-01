@@ -48,10 +48,10 @@
                                         <a href="{{ route('sections.edit', $section->id) }}" class="btn">
                                             <i class="fa fa-edit text-primary" width="15"></i>
                                         </a>
-                                        <form action="{{ route('sections.delete', $section->id) }}" onsubmit="return confirm('Yaqin mau dihapus qaqa ? ')"
+                                        <form action="{{ route('sections.delete', $section->id) }}" onsubmit="return confirm('Yaqin mau dihapus qaqa ?')"
                                             class="d-inline" method="POST">
                                             @csrf
-                                            {{-- @method('DELETE') --}}
+                                            @method('DELETE')
                                             <button type="submit" class="btn p-0">
                                                 <i class="fa fa-trash text-danger" width="15"></i>
                                             </button>
@@ -83,15 +83,6 @@
                                         <form action="{{ route('sections.add') }}" method="GET">
                                             <div class="card">
                                                 <input type="hidden" name="page_id" value="{{ $pages->id }}">
-                                                {{-- <input type="hidden" name="index" value="{{ $sections }}"> --}}
-                                                {{-- <div class="form-group mb-3">
-                                                    <label>Template</label>
-                                                    <select class="form-control form-control-lg" name="template_id">
-                                                        @foreach ( $templates as $template )
-                                                        <option value="{{ $template->id }}">{{ $template->blade }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div> --}}
                                                 <div class="rad_">
                                                     @foreach ( $templates as $template )
                                                     <div class="opt_">
@@ -101,19 +92,11 @@
                                                             <label for="template">{{ $template->blade }}</label>
                                                         </div>
                                                     </div>
-                                                    {{-- <input type="hidden" name="template_id" value="{{ $template->id }}"> --}}
-                                                        {{-- <div class="opt_">
-                                                            <input type="radio" name="section_" id="">
-                                                            <div class="tile">
-                                                                <img src="https://pelindo.sevenpion.net/common/images/section-variants/Layout%205.jpeg" alt="" class="frame_">
-                                                                <label for="1">section</label>
-                                                            </div> --}}
-                                                        @endforeach
-                                                    </div>
+                                                    @endforeach
                                                 </div>
+                                            </div>
                                                 <div class="modal-footer">
-                                                    <button type="submit"
-                                                        class="btn btn-primary col-4 mb-3">Continue</button>
+                                                    <button type="submit" class="btn btn-primary col-4 mb-3">Continue</button>
                                                 </div>
                                         </form>
                                     </div>
@@ -132,8 +115,5 @@
     </div>
 </div>
 </div>
-
-<script>
-</script>
 
 @endsection

@@ -29,7 +29,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="name">Name</label>
-                            <input id="name" type="text" class="form-control" name="name" placeholder="Input Name" value="{{ $sections->name }}">
+                            <input id="name" type="text" class="form-control" name="name" placeholder="Input Section Name" value="{{ $sections->name }}">
                             @error('name')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
@@ -59,7 +59,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="excerpt">Excerpt</label>
-                            <input type="text" class="form-control" name="excerpt" value="{{ $content['excerpt'] }}">
+                            <input type="text" class="form-control" name="excerpt" placeholder="Input Excerpt" value="{{ $content['excerpt'] }}">
                             {{-- @error('excerpt')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
@@ -79,7 +79,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="image_name">Image Name</label>
-                            <input type="text" class="form-control" name="content[0][image_name]" value="{{ $content['content'][0]['image_name'] }}" required>
+                            <input type="text" class="form-control" name="content[0][image_name]" placeholder="Input Image Name" value="{{ $content['content'][0]['image_name'] }}" required>
                             {{-- @error('content')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
@@ -88,7 +88,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-control-placeholder" for="image_excerpt">Image Excerpt</label>
-                            <input type="text" class="form-control" name="content[0][image_excerpt]" value="{{ $content['content'][0]['image_excerpt'] }}" required>
+                            <input type="text" class="form-control" name="content[0][image_excerpt]" placeholder="Input Image Excerpt" value="{{ $content['content'][0]['image_excerpt'] }}" required>
                             {{-- @error('excerpt')
                                 <span class="text-danger small" role="alert">
                                     {{ $message }}
