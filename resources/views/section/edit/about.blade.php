@@ -85,7 +85,7 @@
                         </div>
 
                         <div class="d-line">
-                            <a href="{{ route('pages.back', ['page' => $sections->page_id]) }}" class="btn btn-secondary col-2 mb-3">Kembali</a>
+                            <a href="{{ route('pages.show', $sections->page_id) }}" class="btn btn-secondary col-2 mb-3">Kembali</a>
                             <button type="submit" class="btn btn-primary col-2 mb-3 ml-2 ">Submit</button>
                         </div>
 

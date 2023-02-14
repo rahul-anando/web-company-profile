@@ -138,10 +138,12 @@ class PageController extends Controller
         return redirect()->back()->with('status', 'Data Pages berhasil dihapus.');
     }
 
-    public function back(Request $request, Page $pages)
+    public function preview(Request $request, $id)
     {
-        $data['pages'] = $pages;
+        $data_page = Page::where('slug', $id)->with('sections')->first();
 
-        return view('page.manage', ['page' => $request->page_id], $data);
+        $data['data_page'] = $data_page;
+
+        return view($data_page->slug, $data);
     }
 }

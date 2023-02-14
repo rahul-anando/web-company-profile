@@ -118,7 +118,7 @@ class SectionController extends Controller
         // dd($object);
         Section::create($object);
 
-        return redirect()->route('pages.back', ['page' => $request->page_id])->with('status', 'Data Section berhasil ditambahkan!');
+        return redirect()->route('pages.show', $request->page_id)->with('status', 'Data Section berhasil ditambahkan!');
         // return redirect('pages/show/', )->with('status', 'Data Section berhasil ditambahkan!');
     }
 
@@ -294,7 +294,7 @@ class SectionController extends Controller
         // dd($object);
         $current->update($object);
 
-        return redirect()->route('pages.back', ['page' => $request->page_id])->with('status', 'Data Section berhasil diupdate!');
+        return redirect()->route('pages.show', $request->page_id)->with('status', 'Data Section berhasil diupdate!');
         // return redirect('sections')->with('status', 'Data Section berhasil diupdate!');
     }
 

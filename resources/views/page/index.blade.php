@@ -32,6 +32,7 @@
                                 <th>Meta</th>
                                 <th>Image</th>
                                 <th>Status</th>
+                                <th>Preview</th>
                                 <th class="text-right">Action</th>
                             </tr>
                         </thead>
@@ -52,6 +53,9 @@
                                             <div class="badge badge-success">Publish</div>
                                         </td>
                                     @endif
+                                    <td> <a href="{{ url($page->slug) }}" target="_blank">
+                                        <button type="button" class="btn btn-danger">Preview</button>
+                                    </a></td>
                                     <td class="text-right">
                                         <a class="btn btn-outline-warning mr-2"
                                             href="{{ route('pages.show', $page->id) }}">Manage</a>

@@ -65,7 +65,7 @@ Route::middleware('auth')->group(function () {
         Route::put('update/{pages:id}', [PageController::class, 'update'])->name('update');
         Route::get('edit/{pages:id}', [PageController::class, 'edit'])->name('edit');
         Route::get('show/{id}', [PageController::class, 'show'])->name('show');
-        Route::get('show/{page:id}', [PageController::class, 'back'])->name('back');
+        Route::get('{slug}', [PageController::class, 'preview'])->name('preview');
     });
 
     Route::prefix('templates/')->name('templates.')->group(function () {
